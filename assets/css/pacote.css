@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Lora:wght@400;600&display=swap');
+:root{
+    --color-white: rgb(253, 253, 253);
+    --color-dark: rgb(34, 34, 34);
+    --color-purple: rgb(143, 8, 177);
+    --color-blue-dark: rgb(26, 7, 56);
+    --color-blue: rgb(23, 134, 134);
+    --color-red: rgb(179, 2, 2);
+}
+.msg_inic {
+    text-align: justify;
+}
+.fundo {
+    background-image: url(../img-sistem/cena_crime_fundo2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+}
+.text-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 75vh;
+}

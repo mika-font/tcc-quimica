@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Lora:wght@400;600&display=swap');
+@import url(pacote.css);
+
+.caixa {
+    background-color: white;
+    height: 100vh;
+    width: auto;
+    flex-direction: column;
+    padding: 30px 40px;
+    gap: 3px;
+}
+.seta{
+    margin: 10px 10px 0px 10px;
+}
+.form {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.link {
+    text-decoration: underline;
+}
+.fundo {
+    background-image: url(../img/cena_crime_fundo2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+}
+.texto h2{
+    padding: 20px;
+    text-align: center;
+}
+.texto p{
+    text-align: center;
+}
+.logo {
+    height: 65px;
+    width: auto;
+}
+.logo_g {
+    height: 350px;
+    width: auto;
+}
+.logo_c{
+    height: 200px;
+    width: auto;
+    align-items: center;
+}
+.text {
+    text-align: justify;
+}
+.ajust{
+    padding: 10px;
+    margin: 10px;
+}
+nav ul div li a {
+    color: white;
+}
