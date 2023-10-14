@@ -30,27 +30,28 @@ $user = mysqli_fetch_assoc($result);
                 <div class="text-center py-3">
                     <h2 class="h2">Casos Criminais</h2>
                     <hr>
-                </div>   
+                </div>
             </div>
         </div>
-        <?php if (isset($_GET['msg'])) : 
-            $msg = $_GET['msg']; 
-            if ($msg == 1){ ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button class="btn-close" data-bs-dismiss="alert"></button>
-                Caso criminal cadastrado com sucesso!
-            </div>
-        <?php } else if($msg == 2) { ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button class="btn-close" data-bs-dismiss="alert"></button>
-                Caso criminal editado com sucesso!
-            </div>
-        <?php } else if($msg == 3) { ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button class="btn-close" data-bs-dismiss="alert"></button>
-                Caso criminal excluído com sucesso!
-            </div>
-        <?php } endif?>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Caso criminal cadastrado com sucesso!
+                </div>
+            <?php } else if ($msg == 2) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Caso criminal editado com sucesso!
+                </div>
+            <?php } else if ($msg == 3) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Caso criminal excluído com sucesso!
+                </div>
+        <?php }
+        endif ?>
         <div class="row">
             <?php
             $limite = 3;
@@ -72,8 +73,25 @@ $user = mysqli_fetch_assoc($result);
                             <a href="#" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar</a>
                             <?php if ($user['tipo'] == 1) : ?>
                                 <a href="edit_casos.php?id_caso=<?php echo $dados['id_caso']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a>
-                                <a href="processa_casos.php?deletar=<?php echo $dados['id_caso']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Excluir</a>
+                                <button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $dados['id_caso']; ?>">Excluir</button>
                             <?php endif ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="excluir<?= $dados['id_caso']; ?>" tabindex="-1" aria-labelledby="excluirlabel<?= $dados['id_caso']; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="excluirlabel<?= $dados['id_caso']; ?>">Excluir caso criminal?</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Você deseja mesmo excluir este caso criminal?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não, cancela!</button>
+                                <a href="processa_casos.php?deletar=<?= $dados['id_caso']; ?>" class="btn text-light" style="background-color: var(--color-purple);">Sim, excluir!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,9 +102,9 @@ $user = mysqli_fetch_assoc($result);
                     $count = 0;
                 endif ?>
             <?php endwhile ?>
-        </div>    
+        </div>
     </main>
-    <?php include_once('rodape.php')?>
+    <?php include_once('rodape.php') ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
