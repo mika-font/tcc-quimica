@@ -24,12 +24,14 @@
                 </div>
             </div>
         </div>
-        <?php if (isset($_GET['msg'])) : ?>
+        <?php if (isset($_GET['msg'])) : 
+            $msg = $_GET['msg'];
+            if ($msg == 1) {?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <button class="btn-close" data-bs-dismiss="alert"></button>
                 Os campos devem ser preenchidos corretamente!
             </div>
-        <?php endif; ?>
+        <?php } endif; ?>
         <form method="POST" action="processa_casos.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-xl-12 py-2">
@@ -62,25 +64,8 @@
             <div class="row">
                 <div class="col">
                     <div class="text-end py-3">
-                        <button class="btn link-body-emphasis text-light" type="button" data-bs-toggle="modal" data-bs-target="#confirmacao" style="background-color: var(--color-purple);">Cadastrar</button>
+                        <button class="btn link-body-emphasis text-light" type="submit" name="cadastrar" style="background-color: var(--color-purple);">Cadastrar</button>
                         <a class="btn link-body-emphasis text-light" href="list_casos.php" style="background-color: var(--color-blue);">Voltar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="confirmacao" tabindex="-1" aria-labelledby="conficamacaolabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="conficacaolabel">Cadastrar caso criminal.</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p class="text-center">Deseja mesmo cadastrar este caso criminal?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn link-body-emphasis text-light" style="background-color: var(--color-blue);" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn link-body-emphasis text-light" name="cadastrar" style="background-color: var(--color-purple);" data-bs-dismiss="modal">Salvar Caso Criminal</button>
-                        </div>
                     </div>
                 </div>
             </div>
