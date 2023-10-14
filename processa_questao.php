@@ -27,7 +27,7 @@ if (isset($_POST['cadastrar'])) {
         $resultado = mysqli_query($conexao, $sql);
 
         if ($resultado == TRUE) {
-            header("Location: list_questao.php?msg=2"); //mensagem informando que o cadastro deu certo
+            header("Location: list_questao.php?msg=1"); //mensagem informando que o cadastro deu certo
         } else {
             echo mysqli_errno($conexao) . mysqli_error($conexao);
             die();
@@ -91,7 +91,7 @@ if (isset($_POST['cadastrar'])) {
         $resultado = mysqli_query($conexao, $sql);
 
         if($resultado == TRUE){
-            header("Location: list_recom.php?msg=1"); //mensagem informando que a exclusão deu certo
+            header("Location: list_recom.php?msg=3"); //mensagem informando que a exclusão deu certo
         } else {
             echo mysqli_errno($conexao) . mysqli_error($conexao);
             die();

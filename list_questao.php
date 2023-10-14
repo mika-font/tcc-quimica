@@ -29,6 +29,24 @@ $resultado = mysqli_query($conexao, $sql);
                 </div>   
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) : 
+            $msg = $_GET['msg']; 
+            if ($msg == 1){ ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button class="btn-close" data-bs-dismiss="alert"></button>
+                Questão cadastrada com sucesso!
+            </div>
+        <?php } else if($msg == 2) { ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button class="btn-close" data-bs-dismiss="alert"></button>
+                Questão editada com sucesso!
+            </div>
+        <?php } else if($msg == 3) { ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button class="btn-close" data-bs-dismiss="alert"></button>
+                Questão excluída com sucesso!
+            </div>
+        <?php } endif?>
         <div class="row">
             <?php 
             $limite = 2;

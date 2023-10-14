@@ -33,6 +33,24 @@ $user = mysqli_fetch_assoc($result);
                 </div>   
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) : 
+            $msg = $_GET['msg']; 
+            if ($msg == 1){ ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button class="btn-close" data-bs-dismiss="alert"></button>
+                Caso criminal cadastrado com sucesso!
+            </div>
+        <?php } else if($msg == 2) { ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button class="btn-close" data-bs-dismiss="alert"></button>
+                Caso criminal editado com sucesso!
+            </div>
+        <?php } else if($msg == 3) { ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button class="btn-close" data-bs-dismiss="alert"></button>
+                Caso criminal excluído com sucesso!
+            </div>
+        <?php } endif?>
         <div class="row">
             <?php
             $limite = 3;

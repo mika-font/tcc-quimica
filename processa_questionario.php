@@ -24,7 +24,7 @@ if(isset($_POST['cadastrar'])){
                 }
             }
             if($resultado == TRUE && $result == TRUE){
-                header("Location: cad_questionario.php?msg=3"); //mensagem informando que deu certo
+                header("Location: list_questionario.php?msg=1"); //mensagem informando que deu certo
             } else {
                 echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
                 die();
@@ -57,7 +57,7 @@ if(isset($_POST['cadastrar'])){
                 }
             }
             if($resultado == TRUE && $result == TRUE){
-                header("Location: edit_questionario.php?msg=3"); //mensagem informando que deu certo
+                header("Location: list_questionario.php?msg=2"); //mensagem informando que deu certo
             } else {
                 echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
                 die();
@@ -76,7 +76,7 @@ if(isset($_POST['cadastrar'])){
     $result2 = mysqli_query($conexao, $sql2);
 
     if($result == TRUE && $result2 == TRUE){
-        header("Location: list_questionario.php?msg=2"); //mensagem informando que deu certo
+        header("Location: list_questionario.php?msg=3"); //mensagem informando que deu certo
     } else {
         echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
         die();
