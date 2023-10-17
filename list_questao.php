@@ -46,8 +46,13 @@ $resultado = mysqli_query($conexao, $sql);
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     Questão excluída com sucesso!
                 </div>
-        <?php }
-        endif ?>
+        <?php } else if ($msg == 4) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Não é possível excluir a questão, pois está vinculada a um questionário!
+                    Para a solução, retire esta questão do questionario.
+                </div>
+        <?php } endif ?>
         <div class="row">
             <?php
             $limite = 2;

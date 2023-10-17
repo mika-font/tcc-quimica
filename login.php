@@ -65,16 +65,29 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
                                 </div>
                             </div>
                         </div>
+                        <?php if (isset($_GET['msg'])) :
+                            $msg = $_GET['msg'];
+                            if ($msg == 1) { ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                                    Usuário cadastrado com sucesso!
+                                </div>
+                        <?php }
+                        endif ?>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                             <div class="row">
                                 <div class="col-xl-12 py-2">
-                                    <label class="form-label"><div class="mx-1"><i class="fa-solid fa-envelope fa-xl"></i> Email:</div></label>
+                                    <label class="form-label">
+                                        <div class="mx-1"><i class="fa-solid fa-envelope fa-xl"></i> Email:</div>
+                                    </label>
                                     <input class="form-control" type="email" name="email" class="input" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xl-12 py-2">
-                                    <label class="form-label"><div class="mx-1"><i class="fa-solid fa-key fa-lg"></i> Senha:</div></label>
+                                    <label class="form-label">
+                                        <div class="mx-1"><i class="fa-solid fa-key fa-lg"></i> Senha:</div>
+                                    </label>
                                     <input class="form-control" type="password" name="senha" class="input" required>
                                     <div class="text-end py-2"><span><a href="recuperar_senha.php">Esqueceu a senha?</a></span></div>
                                 </div>
@@ -92,4 +105,5 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
         </div>
     </main>
 </body>
+
 </html>

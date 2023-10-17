@@ -11,6 +11,7 @@ $user = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,35 +22,37 @@ $user = mysqli_fetch_assoc($result);
     <link rel="shortcut icon" href="./assets/img-sistem/atomo.ico" type="image/x-icon">
     <title>Questionários</title>
 </head>
+
 <body>
-    <?php include_once('cabecalho.php');?>
+    <?php include_once('cabecalho.php'); ?>
     <main class="container pb-3">
         <div class="row">
             <div class="col">
                 <div class="text-center py-3">
                     <h2 class="h2">Questionários</h2>
                     <hr>
-                </div>   
+                </div>
             </div>
         </div>
-        <?php if (isset($_GET['msg'])) : 
-            $msg = $_GET['msg']; 
-            if ($msg == 1){ ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button class="btn-close" data-bs-dismiss="alert"></button>
-                Questionário cadastrado com sucesso!
-            </div>
-        <?php } else if($msg == 2) { ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button class="btn-close" data-bs-dismiss="alert"></button>
-                Questionário editado com sucesso!
-            </div>
-        <?php } else if($msg == 3) { ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button class="btn-close" data-bs-dismiss="alert"></button>
-                Questionário excluído com sucesso!
-            </div>
-        <?php } endif?>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Questionário cadastrado com sucesso!
+                </div>
+            <?php } else if ($msg == 2) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Questionário editado com sucesso!
+                </div>
+            <?php } else if ($msg == 3) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Questionário excluído com sucesso!
+                </div>
+        <?php } 
+        endif ?>
         <div class="row">
             <div class="col-xl-12">
                 <div class="table-responsive">
@@ -64,7 +67,7 @@ $user = mysqli_fetch_assoc($result);
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php 
+                            <?php
                             foreach ($dados as $questionario) :
                                 $data1 = date_create($questionario['date_inic']);
                                 $data_inicio = date_format($data1, 'd/m/Y');
@@ -76,12 +79,29 @@ $user = mysqli_fetch_assoc($result);
                                     <td><?php echo $questionario['assunto']; ?></td>
                                     <td><?php echo $data_inicio; ?></td>
                                     <td><?php echo $data_fim; ?></td>
-                                    <td><a href="#" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar</a></td>
+                                    <td><a href="visualizar_questionario.php?questionario=<?= $questionario['id_questionario']?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar</a></td>
                                     <?php if ($user['tipo'] == 1) : ?>
-                                        <td><a href="edit_questionario.php?id_questionario=<?php echo $questionario['id_questionario']; ?>" class="btn text-light" style="background-color: var(--color-purple);">Editar</a></td>
-                                        <td><a href="processa_questionario.php?deletar=<?php echo $questionario['id_questionario']; ?>" name="deletar" class="btn text-light" style="background-color: var(--color-purple);">Excluir</a></td>
+                                        <td><a href="edit_questionario.php?id_questionario=<?php echo $questionario['id_questionario']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a></td>
+                                        <td><button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $questionario['id_questionario']; ?>">Excluir</button></td>
                                     <?php endif; ?>
                                 </tr>
+                                <div class="modal fade" id="excluir<?= $questionario['id_questionario']; ?>" tabindex="-1" aria-labelledby="excluirlabel<?= $questionario['id_questionario']; ?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="excluirlabel<?= $questionario['id_questionario']; ?>">Excluir questionário?</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Você deseja mesmo excluir este questionário?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não, cancela!</button>
+                                                <a href="processa_questionario.php?deletar=<?= $questionario['id_questionario']; ?>" class="btn text-light" style="background-color: var(--color-purple);">Sim, excluir!</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -89,8 +109,9 @@ $user = mysqli_fetch_assoc($result);
             </div>
         </div>
     </main>
-    <?php include_once('rodape.php')?>
+    <?php include_once('rodape.php') ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
+
 </html>
