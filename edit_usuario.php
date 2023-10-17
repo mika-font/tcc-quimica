@@ -4,7 +4,6 @@ $id_usuario = $_GET['id_usuario'];
 $sql = "SELECT * FROM usuario WHERE id_usuario = '$id_usuario'";
 $resultado = mysqli_query($conexao, $sql);
 $dados = mysqli_fetch_assoc($resultado);
-
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +31,27 @@ $dados = mysqli_fetch_assoc($resultado);
                 </div>
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    É necessário completar os campos abaixo!
+                </div>
+            <?php } else if ($msg == 2) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    As senhas devem ser iguais!
+                </div>
+        <?php } 
+        endif ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_usuario.php" class="form-cad-user">
                     <div class="row">
                         <div class="col-xl-6 py-2">
-                            <input type="hidden" name="id_usuario" value="<?php echo $dados['id_usuario']; ?>">
+                            <input type="hidden" name="id_usuario" value="<?= $dados['id_usuario']; ?>">
+                            <input type="hidden" name="tipo" value="<?= $dados['tipo']; ?>">
                             <label class="form-label">Nome:</label>
                             <input class="form-control" type="text" name="nome" class="input" value="<?php echo $dados['nome']; ?>" required>
                         </div>
@@ -59,7 +73,7 @@ $dados = mysqli_fetch_assoc($resultado);
                     <div class="row">                    
                         <div class="col-xl-12">
                             <div class="text-end py-2">
-                                <button class="btn link-body-emphasis text-light" type="submit" class="input" name="cadastrar" style="background-color: var(--color-purple)">Cadastrar</button>
+                                <button class="btn link-body-emphasis text-light" type="submit" class="input" name="Editar" style="background-color: var(--color-purple)">Editar</button>
                                 <?php if($_SESSION['tipo'] == 1 && $id_usuario != $_SESSION['id_usuario']){ ?>
                                     <a class="btn link-body-emphasis text-light" href="list_users.php" style="background-color: var(--color-blue);">Voltar</a>
                                 <?php } else { ?>

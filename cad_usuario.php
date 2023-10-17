@@ -24,6 +24,20 @@
                 </div>
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    É necessário completar os campos abaixo!
+                </div>
+            <?php } else if ($msg == 2) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    As senhas devem ser iguais!
+                </div>
+        <?php } 
+        endif ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_usuario.php" class="form-cad-user">
