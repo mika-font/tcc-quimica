@@ -63,10 +63,10 @@ if(isset($_POST['cadastrar'])){
                 die();
             }
         } else {
-            header("Location: edit_questionario.php?msg=2"); //mensagem informando para selecionar 10 questões somente
+            header("Location: edit_questionario.php?id_questionario=$id_questionario&msg=2"); //mensagem informando para selecionar 10 questões somente
         }
     } else {
-        header("Location: edit_questionario.php?msg=1"); //mensagem informando para preencher os campos
+        header("Location: edit_questionario.php?id_questionario=$id_questionario&msg=1"); //mensagem informando para preencher os campos
     }
 } else if (isset($_GET['deletar'])){
     $id_questionario = $_GET['deletar'];

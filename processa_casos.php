@@ -94,7 +94,7 @@ if (isset($_POST['cadastrar'])) {
             die();
         }
     } else {
-        header("Location: edit_casos.php?msg=1"); //mensagem de que falta completar os campos
+        header("Location: edit_casos.php?id_caso=$id_caso&msg=1"); //mensagem de que falta completar os campos
     }
 
 } else if (isset($_GET['deletar'])) {

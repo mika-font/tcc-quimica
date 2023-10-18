@@ -11,8 +11,7 @@ if (isset($_POST['cadastrar'])) {
     if (!empty($nome) && !empty($email) && !empty($senha) && !empty($repetirSenha)) {
         $tipo = 0;
         if ($senha == $repetirSenha) {
-            $senha_cript = password_hash($senha, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO usuario (nome, email, senha, tipo) VALUES ('$nome', '$email', '$senha_cript', '$tipo')";
+            $sql = "INSERT INTO usuario (nome, email, senha, tipo) VALUES ('$nome', '$email', '$senha', '$tipo')";
             $resultado = mysqli_query($conexao, $sql);
             if ($resultado == true) {
                 if(isset($_SESSION) && $_SESSION['tipo'] == 1){
@@ -37,13 +36,12 @@ if (isset($_POST['cadastrar'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $repetirSenha = $_POST['repet_senha'];
+    $repetirSenha = $_POST['repetirSenha'];
     $tipo = $_POST['tipo'];
 
     if (!empty($nome) && !empty($email) && !empty($senha) && !empty($repetirSenha)) {
         if ($senha == $repetirSenha) {
-            $senha_cript = password_hash($senha, PASSWORD_DEFAULT);
-            $sql = "UPDATE usuario SET nome='$nome', email='$email', senha='$senha_cript', tipo='$tipo' WHERE id_usuario='$id_usuario'";
+            $sql = "UPDATE usuario SET nome='$nome', email='$email', senha='$senha', tipo='$tipo' WHERE id_usuario='$id_usuario'";
             $resultado = mysqli_query($conexao, $sql);
 
             if ($resultado == true) {
@@ -57,10 +55,10 @@ if (isset($_POST['cadastrar'])) {
                 die();
             }
         } else {
-            header("Location: edit_usuario.php?msg=2");
+            header("Location: edit_usuario.php?id_usuario=$id_usuario&msg=2");
         }
     } else {
-        header("Location: edit_usuario.php?msg=1");
+        header("Location: edit_usuario.php?id_usuario=$id_usuario&msg=1");
     }
 } else if (isset($_GET['deletar'])) {
     include_once('controle.php');

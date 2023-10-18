@@ -4,8 +4,8 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
     $conexao = conectar();
     session_start();
 
-    $email = mysqli_real_escape_string($conexao, $_POST['email']);
-    $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
     $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
     $resultado = mysqli_query($conexao, $sql);
@@ -18,11 +18,9 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
         $_SESSION['tipo'] = $dados['tipo'];
 
         header("Location: central.php");
-    } elseif (mysqli_num_rows($resultado) < 1) {
-        unset($_SESSION['email']);
-        unset($_SESSION['id_usuario']);
-        unset($_SESSION['tipo']);
+    } else if (mysqli_num_rows($resultado) > 1 or mysqli_num_rows($resultado) == 0) {
         session_destroy();
+        $msg = 2;
     }
 }
 ?>
@@ -65,15 +63,20 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
                                 </div>
                             </div>
                         </div>
-                        <?php if (isset($_GET['msg'])) :
+                        <?php if (isset($_GET['msg'])) {
                             $msg = $_GET['msg'];
                             if ($msg == 1) { ?>
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <button class="btn-close" data-bs-dismiss="alert"></button>
                                     Usuário cadastrado com sucesso!
                                 </div>
-                        <?php }
-                        endif ?>
+                            <?php }
+                        } else if (isset($msg)) { ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button class="btn-close" data-bs-dismiss="alert"></button>
+                                Senha ou Email incorreto, verifique suas credenciais!
+                            </div>
+                        <?php } ?>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                             <div class="row">
                                 <div class="col-xl-12 py-2">
@@ -104,6 +107,8 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 
 </html>

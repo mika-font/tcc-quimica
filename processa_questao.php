@@ -74,7 +74,7 @@ if (isset($_POST['cadastrar'])) {
             die();
         }
     } else {
-        header("Location: edit_questao.php?msg=1"); //mensagem informando que deve possuir campos preenchidos
+        header("Location: edit_questao.php?id_questao=$id_questao&msg=1"); //mensagem informando que deve possuir campos preenchidos
     }
 } elseif (isset($_GET['deletar'])) {
     $id_questao = $_GET['deletar'];

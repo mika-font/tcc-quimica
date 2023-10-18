@@ -73,7 +73,7 @@ $dados = mysqli_fetch_assoc($resultado);
                     <div class="row">                    
                         <div class="col-xl-12">
                             <div class="text-end py-2">
-                                <button class="btn link-body-emphasis text-light" type="submit" class="input" name="Editar" style="background-color: var(--color-purple)">Editar</button>
+                                <button class="btn link-body-emphasis text-light" type="submit" class="input" name="editar" style="background-color: var(--color-purple)">Editar</button>
                                 <?php if($_SESSION['tipo'] == 1 && $id_usuario != $_SESSION['id_usuario']){ ?>
                                     <a class="btn link-body-emphasis text-light" href="list_users.php" style="background-color: var(--color-blue);">Voltar</a>
                                 <?php } else { ?>

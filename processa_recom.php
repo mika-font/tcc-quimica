@@ -89,7 +89,7 @@ if (isset($_POST['cadastrar'])) {
                 die();
             }
     } else {
-        header("Location: edit_recom.php?msg=1"); //mensagem informando que deve possuir campos preenchidos
+        header("Location: edit_recom.php?id_recom=$id_recom&msg=1"); //mensagem informando que deve possuir campos preenchidos
     }
 } else if ($_GET['deletar']) {
     $id_recom = $_GET['deletar'];
@@ -106,7 +106,7 @@ if (isset($_POST['cadastrar'])) {
         $sql = "DELETE FROM recomendacao WHERE id_recom=$id_recom";
         $resultado = mysqli_query($conexao, $sql);
         if($resultado == TRUE){
-            header("Location: list_recom.php?msg=3"); //mensagem informando que a exclusão deu certo
+            header("Location: list_recom.php?msg=3");
         } else {
             echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
             die();

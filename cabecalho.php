@@ -43,7 +43,6 @@
                         <li class="nav-link"><a class="nav-link link-body-emphasis text-light" href="list_casos.php">Casos Criminais</a></li>
                         <li class="nav-link"><a class="nav-link link-body-emphasis text-light" href="list_recom.php">Recomendações</a></li>
                         <li class="nav-link"><a class="nav-link link-body-emphasis text-light" href="list_questionario.php">Questionários</a></li>
-                        <li class="nav-link"><a class="nav-link link-body-emphasis text-light" href="list_questao.php">Questões</a></li>
                     </ul>
                     <div class="dropdown">
                         <a class="d-block link-body-emphasis text-decoration-none dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false">Conta</a>
