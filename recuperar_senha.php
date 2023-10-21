@@ -8,17 +8,15 @@ if (isset($_POST['solicitar'])) {
 
     $sql = "SELECT * FROM usuario WHERE email = '$email' LIMIT 1";
     $resultado = mysqli_query($conexao, $sql);
-    
+
     if ($resultado == TRUE) {
         if (mysqli_num_rows($resultado) > 0) {
-            if ($x) {
-                $sql = "UPDATE usuario SET senha = '$nova_senha_cript' WHERE email = '$email'";
-                $resultado = mysqli_query($conexao, $sql);
-                if ($resultado == TRUE) {
-                } else {
-                    echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
-                    die();
-                }
+            $sql = "UPDATE usuario SET senha = '$nova_senha_cript' WHERE email = '$email'";
+            $resultado = mysqli_query($conexao, $sql);
+            if ($resultado == TRUE) {
+            } else {
+                echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
+                die();
             }
         } else {
             $msg = 1;
@@ -54,7 +52,7 @@ if (isset($_POST['solicitar'])) {
                 </div>
             </div>
         </div>
-        <?php if (isset($msg)) : 
+        <?php if (isset($msg)) :
             if ($msg == 1) { ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button class="btn-close" data-bs-dismiss="alert"></button>
