@@ -70,7 +70,7 @@ $user = mysqli_fetch_assoc($result);
                             <p class="card-text"><?php echo "<b>Local:</b> " . $dados['local'] . "<br><b> Data:</b> " . $dataformat; ?></p>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="#" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar</a>
+                            <a href="visualizar_caso.php?id_caso=<?= $dados['id_caso']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar</a>
                             <?php if ($user['tipo'] == 1) : ?>
                                 <a href="edit_casos.php?id_caso=<?php echo $dados['id_caso']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a>
                                 <button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $dados['id_caso']; ?>">Excluir</button>
