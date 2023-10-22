@@ -65,6 +65,10 @@ function recortarText($texto)
             $limite = 3;
             $count = 0;
             while ($dados = mysqli_fetch_assoc($resultado)) :
+                $id_recom_p = $dados['id_recom'];
+                $link_img = $dados['imagem'];
+                $link_arq = $dados['arquivo'];
+
                 $texto = $dados['sinopse'];
                 $sinopse = recortarText($texto);
                 $count++;
@@ -76,19 +80,41 @@ function recortarText($texto)
                             <p class="card-text"><?php echo $sinopse; ?></p>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="#" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar</a>
+                            <button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#visual<?= $id_recom_p; ?>">Visualizar</button>
                             <?php if ($user['tipo'] == 1) : ?>
-                                <a href="edit_recom.php?id_recom=<?php echo $dados['id_recom']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a>
-                                <a href="processa_recom.php?deletar=<?php echo $dados['id_recom']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Excluir</a>
+                                <a href="edit_recom.php?id_recom=<?= $id_recom_p; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a>
+                                <button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $id_recom_p; ?>">Excluir</button>
                             <?php endif ?>
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="excluir<?= $dados['id_recom']; ?>" tabindex="-1" aria-labelledby="excluirlabel<?= $dados['id_recom']; ?>" aria-hidden="true">
+                <div class="modal modal-xl fade" id="visual<?= $id_recom_p; ?>" tabindex="-1" aria-labelledby="visuallabel<?= $id_recom_p; ?>" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="excluirlabel<?= $dados['id_recom']; ?>">Excluir esta recomendação?</h1>
+                                <h1 class="modal-title fs-5" id="visuallabel<?= $id_recom_p; ?>"><?= $dados['titulo']; ?></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-wrap pb-3"><?= $texto; ?></div>
+                                <?php if($link_img != NULL){ ?>
+                                    <div class="text-center p-2"><img src="<?= $link_img; ?>" height="200px" width="auto"></div>
+                                <?php } ?>
+                                <?php if($link_arq != NULL){ ?>
+                                    <p>Acesse o documento complementar através do link: <a href="<?= $link_arq; ?>">Arquivo PDF</a></p>
+                                <?php } ?>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar Recomendação</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="excluir<?= $id_recom_p; ?>" tabindex="-1" aria-labelledby="excluirlabel<?= $id_recom_p; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="excluirlabel<?= $id_recom_p; ?>">Excluir esta recomendação?</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -96,7 +122,7 @@ function recortarText($texto)
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não, cancela!</button>
-                                <a href="processa_recom.php?deletar=<?= $dados['id_recom']; ?>" class="btn text-light" style="background-color: var(--color-purple);">Sim, excluir!</a>
+                                <a href="processa_recom.php?deletar=<?= $id_recom_p; ?>" class="btn text-light" style="background-color: var(--color-purple);">Sim, excluir!</a>
                             </div>
                         </div>
                     </div>
@@ -108,8 +134,8 @@ function recortarText($texto)
                     $count = 0;
                 endif ?>
             <?php endwhile ?>
-        </div>
-
+            </div>
+        </div>            
     </main>
     <?php include_once('rodape.php') ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
