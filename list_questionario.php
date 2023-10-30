@@ -8,6 +8,18 @@ $id_usuario = $_SESSION['id_usuario'];
 $sql = "SELECT * FROM usuario WHERE id_usuario = '$id_usuario'";
 $result = mysqli_query($conexao, $sql);
 $user = mysqli_fetch_assoc($result);
+
+function date_verify($data_fim, $data_inicio){
+    $hoje = date('d/m/Y');
+    $data_atual = strtotime($hoje);
+    $data_final = strtotime($data_fim);
+    $data_inicial = strtotime($data_inicio);
+    if($data_atual >= $data_inicial && $data_atual <= $data_final){
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -29,7 +41,7 @@ $user = mysqli_fetch_assoc($result);
         <div class="row">
             <div class="col">
                 <div class="text-center py-3">
-                    <h2 class="h2">Questionários</h2>
+                    <h2>Questionários</h2>
                     <hr>
                 </div>
             </div>
@@ -70,8 +82,8 @@ $user = mysqli_fetch_assoc($result);
                             <?php
                             foreach ($dados as $questionario) :
                                 $data1 = date_create($questionario['date_inic']);
-                                $data_inicio = date_format($data1, 'd/m/Y');
                                 $data2 = date_create($questionario['date_fin']);
+                                $data_inicio = date_format($data1, 'd/m/Y');
                                 $data_fim = date_format($data2, 'd/m/Y');
                             ?>
                                 <tr class="text-center">
@@ -79,7 +91,11 @@ $user = mysqli_fetch_assoc($result);
                                     <td><?php echo $questionario['assunto']; ?></td>
                                     <td><?php echo $data_inicio; ?></td>
                                     <td><?php echo $data_fim; ?></td>
-                                    <td><a href="visualizar_questionario.php?questionario=<?= $questionario['id_questionario']?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar</a></td>
+                                    <?php if (date_verify($data_fim, $data_inicio) == TRUE) { ?>
+                                        <td><a href="visualizar_questionario.php?questionario=<?= $questionario['id_questionario']?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Responder</a></td>
+                                    <?php } else { ?>
+                                        <td><button href="visualizar_questionario.php?questionario=<?= $questionario['id_questionario']?>" class="card-link btn text-light" style="background-color: var(--color-purple);" disabled>Responder</button></td>
+                                    <?php } ?>
                                     <?php if ($user['tipo'] == 1) : ?>
                                         <td><a href="edit_questionario.php?id_questionario=<?php echo $questionario['id_questionario']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a></td>
                                         <td><button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $questionario['id_questionario']; ?>">Excluir</button></td>

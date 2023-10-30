@@ -44,7 +44,7 @@ if(isset($_POST['cadastrar'])){
     $questoes = $_POST['select_question'];
     if(!empty($titulo) && !empty($assunto) && !empty($data_inicio) && !empty($data_termino)){
         if(count($questoes) == 10){
-            $sql = "UPDATE questionario SET data_inic='$data_inicio', data_fin='$data_termino', assunto='$assunto', titulo_quest='$titulo' WHERE id_questionario=$id_questionario";
+            $sql = "UPDATE questionario SET date_inic='$data_inicio', date_fin='$data_termino', assunto='$assunto', titulo_quest='$titulo' WHERE id_questionario=$id_questionario";
             $resultado = mysqli_query($conexao, $sql);
             for($i=0; $i < count($questoes); $i++){
                 $sql = "UPDATE contem SET id_questao='$questoes[$i]' WHERE id_questionario=$id_questionario";

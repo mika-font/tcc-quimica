@@ -30,7 +30,6 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
 
 <body>
     <?php include_once('cabecalho.php'); ?>
-    <?php include_once('cabecalho.php'); ?>
     <main class="container pb-3">
         <div class="row">
             <div class="col">
@@ -46,6 +45,7 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                 <form method="POST" action="processa_questionario.php">
                     <div class="row">
                         <div class="col-xl-6 py-2">
+                            <input type="hidden" name="id_questionario" value="<?= $id_questionario; ?>">
                             <label class="form-label">Título:</label>
                             <input class="form-control" type="text" name="titulo" value="<?php echo $info_quest['titulo_quest']; ?>" required>
                         </div>
