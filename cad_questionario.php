@@ -69,7 +69,7 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <div class="col-xl-6 py-3">
                                 <div class="card text-center h-100">
                                     <div class="card-header">
-                                        <input type="checkbox" name="select_question[]" value="<?php echo $questao['id_questao'] ?>"> Questão n° <?php echo $questao['id_questao']; ?>
+                                        <input type="checkbox" id="checkbox" name="select_question[]" onclick="limitar()" value="<?php echo $questao['id_questao'] ?>"> Questão n° <?php echo $questao['id_questao']; ?>
                                     </div>
                                     <div class="card-body">
                                         <p class="card-text"><?php echo $questao['enunciado']; ?></p>
@@ -114,6 +114,19 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </div>
     </main>
     <?php include_once('rodape.php')?>
+    <script>
+        function limitar (){
+            var checkBoxes = document.querySelectorAll("#checkbox");
+            var limite = 10;
+            var selecionado = 0;
+
+            if(selecionado > limite || selecionado < limite){
+                //desativa o botão de envio
+            }
+        }
+
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
