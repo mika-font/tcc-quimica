@@ -9,12 +9,12 @@ $sql = "SELECT * FROM usuario WHERE id_usuario = '$id_usuario'";
 $result = mysqli_query($conexao, $sql);
 $user = mysqli_fetch_assoc($result);
 
-function date_verify($data_fim, $data_inicio){
-    $hoje = date('d/m/Y');
-    $data_atual = strtotime($hoje);
-    $data_final = strtotime($data_fim);
-    $data_inicial = strtotime($data_inicio);
-    if($data_atual >= $data_inicial && $data_atual <= $data_final){
+function date_verify($date_bd_inicio, $date_bd_final){
+    $hoje = date('Y-m-d');
+    $time_hoje = strtotime($hoje);
+    $time_inicio = strtotime($date_bd_inicio);
+    $time_final = strtotime($date_bd_final);
+    if($time_hoje >= $time_inicio && $time_hoje <= $time_final){
         return TRUE;
     } else {
         return FALSE;
@@ -81,8 +81,11 @@ function date_verify($data_fim, $data_inicio){
                         <tbody class="table-group-divider">
                             <?php
                             foreach ($dados as $questionario) :
-                                $data1 = date_create($questionario['date_inic']);
-                                $data2 = date_create($questionario['date_fin']);
+                                $date_bd_inicio = $questionario['date_inic'];
+                                $date_bd_final = $questionario['date_fin'];
+                                $verificador = date_verify($date_bd_inicio, $date_bd_final);
+                                $data1 = date_create($date_bd_inicio);
+                                $data2 = date_create($date_bd_final);
                                 $data_inicio = date_format($data1, 'd/m/Y');
                                 $data_fim = date_format($data2, 'd/m/Y');
                             ?>
@@ -91,7 +94,7 @@ function date_verify($data_fim, $data_inicio){
                                     <td><?php echo $questionario['assunto']; ?></td>
                                     <td><?php echo $data_inicio; ?></td>
                                     <td><?php echo $data_fim; ?></td>
-                                    <?php if (date_verify($data_fim, $data_inicio) == TRUE) { ?>
+                                    <?php if ($verificador == TRUE) { ?>
                                         <td><a href="visualizar_questionario.php?questionario=<?= $questionario['id_questionario']?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Responder</a></td>
                                     <?php } else { ?>
                                         <td><button href="visualizar_questionario.php?questionario=<?= $questionario['id_questionario']?>" class="card-link btn text-light" style="background-color: var(--color-purple);" disabled>Responder</button></td>
