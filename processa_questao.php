@@ -78,20 +78,21 @@ if (isset($_POST['cadastrar'])) {
     }
 } elseif (isset($_GET['deletar'])) {
     $id_questao = $_GET['deletar'];
-    $sql = "SELECT * FROM questao WHERE id_questao=$id_questao";
+    $sql = "SELECT * FROM questao WHERE id_questao = $id_questao";
     $result = mysqli_query($conexao, $sql);
 
     if($result == TRUE){
         $sql = "DELETE FROM questao WHERE id_questao = $id_questao";
-        $resultado = mysqli_query($conexao, $sql); //tratar erro
-        if($resultado == TRUE){
+        $resultado = mysqli_query($conexao, $sql);
+        if($resultado == FALSE){
+            echo mysqli_error($conexao);
+            header("Location: list_questao.php?msg=4");
+        } else {
             $dados = mysqli_fetch_assoc($result);
             if(!empty($dados['imagem'])){
                 unlink($dados['imagem']);
             }
             header("Location: list_questao.php?msg=3");
-        } else {
-            header("Location: list_questao.php?msg=4");
         }
     } else {
         echo mysqli_errno($conexao) . mysqli_error($conexao);
