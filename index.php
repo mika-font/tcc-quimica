@@ -97,6 +97,11 @@ if ($result_casos == TRUE) {
                 endif ?>
             <?php endwhile ?>
         </div>
+        <hr>
+        <div class="text-center">
+            <img src="./assets/img-sistem/logo_compacta.png" height="150px" width="auto">
+        </div>
+        <hr>
     </main>
     <div class="row">
         <div style="background-color: var(--color-purple);">

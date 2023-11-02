@@ -47,17 +47,22 @@ function recortarText($texto)
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-xl-5">
+                <div class="text-center aling-center">
+                    <img src="./assets/img-sistem/logo.png" width="300px" height="auto">
+                </div>
+            </div>
+            <div class="col-xl-7">
                 <div class="text-wrap msg_inic">
-                    <p>Esta plataforma foi especialmente elaborada para introduzí-lo no mundo da criminologia.</p>
-                    <p>Não deixe de visitar a aba de conteúdos, onde foi elaborado materiais completos e repleto de imagens para demonstrar as diferentes situações que um perito criminal poderá enfrentar.
+                    <p class="mb-1">Esta plataforma foi especialmente elaborada para introduzí-lo no mundo da criminologia.</p>
+                    <p class="mb-1">Não deixe de visitar a aba de conteúdos, onde desenvolvemos materiais completos e repleto de imagens para demonstrar as diferentes situações que um perito criminal poderá enfrentar na sua carreira.
                     E para treinar seus conhecimentos, visite a aba de questionários e responda as questões relacionadas ao conteúdo estudado, as respostas serão entregues à equipe pedagógica da plataforma para avaliarmos seu andamento e a efetividade do ensino, sua ajuda é extremamente importante.</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h5>Veja alguns casos criminais...</h5>
+                <h4>Veja alguns casos criminais...</h4>
                 <hr>
             </div>
         </div>
@@ -94,7 +99,7 @@ function recortarText($texto)
         <hr>
         <div class="row">
             <div class="col">
-                <h5>Leia e assista algumas recomendações...</h5>
+                <h4>Leia e assista algumas recomendações...</h4>
                 <hr>
             </div>
         </div>
