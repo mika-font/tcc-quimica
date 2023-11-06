@@ -119,9 +119,13 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
             var checkBoxes = document.querySelectorAll("#checkbox");
             var limite = 10;
             var selecionado = 0;
-
+            if(checkBoxes.length){
+                //adicionar na variável selecionado
+            }
             if(selecionado > limite || selecionado < limite){
                 //desativa o botão de envio
+            } else {
+                //ativa o botão de envio
             }
         }
 
