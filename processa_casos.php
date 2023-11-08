@@ -29,7 +29,7 @@ if (isset($_POST['cadastrar'])) {
                 $resultado = mysqli_query($conexao, $sql);
             }
             if ($resultado == true) {
-                header("Location: list_casos.php?msg=1"); //mensagem de que o cadastro deu certo
+                header("Location: list_casos.php?msg=1");
             } else {
                 echo mysqli_errno($conexao) . mysqli_error($conexao);
                 die();
@@ -39,7 +39,7 @@ if (isset($_POST['cadastrar'])) {
             die();
         }
     } else {
-        header("Location: cad_casos.php?msg=2"); //mensagem de que falta completar os campos
+        header("Location: cad_casos.php?msg=1");
     }
 } else if (isset($_POST['editar'])) {
     $id_caso = $_POST['id_caso'];
@@ -77,7 +77,7 @@ if (isset($_POST['cadastrar'])) {
                         $resultado = mysqli_query($conexao, $sql);
                     }
                     if ($resultado == true) {
-                        header("Location: list_casos.php?msg=2"); //mensagem de que a edição deu certo
+                        header("Location: list_casos.php?msg=2");
                     } else {
                         echo mysqli_errno($conexao) . mysqli_error($conexao);
                         die();
@@ -87,14 +87,14 @@ if (isset($_POST['cadastrar'])) {
                     die();
                 }
             } else {
-                header("Location: list_casos.php?msg=2"); //mensagem de que a edição deu certo
+                header("Location: list_casos.php?msg=2");
             }
         } else {
             echo mysqli_errno($conexao) . mysqli_error($conexao);
             die();
         }
     } else {
-        header("Location: edit_casos.php?id_caso=$id_caso&msg=1"); //mensagem de que falta completar os campos
+        header("Location: edit_casos.php?id_caso=$id_caso&msg=1");
     }
 
 } else if (isset($_GET['deletar'])) {
@@ -109,7 +109,7 @@ if (isset($_POST['cadastrar'])) {
     $result1 = mysqli_query($conexao, $sql1);
     $result2 = mysqli_query($conexao, $sql2);
     if ($result1 == true && $result2 == true) {
-        header("Location: list_casos.php?msg=3"); //mensagem de que a exclusão deu certo
+        header("Location: list_casos.php?msg=3"); 
     } else {
         echo mysqli_errno($conexao) . mysqli_error($conexao);
         die();

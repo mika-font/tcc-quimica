@@ -40,6 +40,19 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                 </div>
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Preencha todos os campos corretamente!
+                </div>
+            <?php } else if ($msg == 2) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Selecione somente 10 questões!
+                </div>
+        <?php } endif ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_questionario.php">
@@ -161,7 +174,7 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                     <div class="row">
                         <div class="col">
                             <div class="text-end py-3">
-                                <button class="btn link-body-emphasis text-light" type="submit" name="editar" style="background-color: var(--color-purple);" disabled>Editar</button>
+                                <button class="btn link-body-emphasis text-light" id="editar" type="submit" name="editar" style="background-color: var(--color-purple);" disabled>Editar</button>
                                 <a class="btn link-body-emphasis text-light" href="list_questionario.php" style="background-color: var(--color-blue);">Voltar</a>
                             </div>
                         </div>
@@ -173,17 +186,15 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
     <?php include_once('rodape.php') ?>
     <script>
         function limitar(){
-            let botaoEnvio = document.getElementById("cadastro");
+            let botaoEnvio = document.getElementById("editar");
             let checkBoxes = document.querySelectorAll("#checkbox");
             let limite = 10;
             let selecionado = 0;
             for (count = 0; count < checkBoxes.length; count++) {
                 if (checkBoxes[count].checked == true) {
                     selecionado = selecionado + 1;
-                    console.log(selecionado);
                     if (selecionado > limite || selecionado < limite) {
                         botaoEnvio.disabled = true;
-
                     } else {
                         botaoEnvio.disabled = false;
                     }

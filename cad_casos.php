@@ -27,10 +27,10 @@
         <?php if (isset($_GET['msg'])) : 
             $msg = $_GET['msg'];
             if ($msg == 1) {?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <button class="btn-close" data-bs-dismiss="alert"></button>
-                Os campos devem ser preenchidos corretamente!
-            </div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Preencha todos os campos corretamente!
+                </div>
         <?php } endif; ?>
         <form method="POST" action="processa_casos.php" enctype="multipart/form-data">
             <div class="row">

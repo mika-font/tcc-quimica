@@ -29,16 +29,16 @@ if (isset($_POST['cadastrar'])) {
             $resultado = mysqli_query($conexao, $sql);
 
             if($resultado == TRUE){
-                header("Location: list_recom.php?msg=1"); //mensagem informando que o cadastro deu certo
+                header("Location: list_recom.php?msg=1");
             } else {
                 echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
                 die();
             }
         } else {
-            header("Location: cad_recom.php?msg=2"); //mensagem informando que deve possuir um ou outro ou os dois
+            header("Location: cad_recom.php?msg=2");
         }
     } else {
-        header("Location: cad_recom.php?msg=1"); //mensagem informando que deve possuir campos preenchidos
+        header("Location: cad_recom.php?msg=1"); 
     }
 } else if ($_POST['editar']) {
     $id_recom = $_POST['id_recom'];
@@ -83,13 +83,13 @@ if (isset($_POST['cadastrar'])) {
             $sql = "UPDATE recomendacao SET titulo='$titulo', sinopse='$sinopse', imagem='$arv_img', arquivo='$arv_arv' WHERE id_recom=$id_recom";
             $resultado = mysqli_query($conexao, $sql);
             if($resultado == TRUE){
-                header("Location: list_recom.php?msg=2"); //mensagem informando que a edição deu certo
+                header("Location: list_recom.php?msg=2");
             } else {
                 echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
                 die();
             }
     } else {
-        header("Location: edit_recom.php?id_recom=$id_recom&msg=1"); //mensagem informando que deve possuir campos preenchidos
+        header("Location: edit_recom.php?id_recom=$id_recom&msg=1");
     }
 } else if ($_GET['deletar']) {
     $id_recom = $_GET['deletar'];

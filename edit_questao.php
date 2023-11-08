@@ -1,9 +1,9 @@
-<?php 
+<?php
 include_once("controle.php");
 $id_questao = $_GET['id_questao'];
 $sql = "SELECT * FROM questao WHERE id_questao='$id_questao'";
 $resultado = mysqli_query($conexao, $sql);
-if($resultado == TRUE){
+if ($resultado == TRUE) {
     $dados = mysqli_fetch_assoc($resultado);
 } else {
     echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
@@ -33,17 +33,26 @@ if($resultado == TRUE){
                     <h2 class="h2">Editar Questão</h2>
                     <div class="m-3"><i class="fa-solid fa-flask-vial fa-2xl" style="color: #000000;"></i></div>
                     <hr>
-                </div>   
+                </div>
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Preencha todos os campos corretamente!
+                </div>
+        <?php }
+        endif; ?>
         <div class="row">
             <div class="col">
                 <form action="processa_questao.php" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-xl-12 py-2">
-                            <input type="hidden" name="id_questao" value="<?php echo $dados['id_questao']?>">
+                            <input type="hidden" name="id_questao" value="<?php echo $dados['id_questao'] ?>">
                             <label class="form-label">Enunciado:</label>
-                            <textarea class="form-control" name="enunciado" id="enunciado" cols="100" rows="30" required><?php echo $dados['enunciado']?></textarea>
+                            <textarea class="form-control" name="enunciado" id="enunciado" cols="100" rows="30" required><?php echo $dados['enunciado'] ?></textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -60,25 +69,25 @@ if($resultado == TRUE){
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Alternativa 1:</label>
-                            <input class="form-control" type="text" name="alt1" value="<?php echo $dados['alt_1']?>" required>
+                            <input class="form-control" type="text" name="alt1" value="<?php echo $dados['alt_1'] ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Alternativa 2:</label>
-                            <input class="form-control" type="text" name="alt2" value="<?php echo $dados['alt_2']?>" required>
+                            <input class="form-control" type="text" name="alt2" value="<?php echo $dados['alt_2'] ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Alternativa 3:</label>
-                            <input class="form-control" type="text" name="alt3" value="<?php echo $dados['alt_3']?>" required>
+                            <input class="form-control" type="text" name="alt3" value="<?php echo $dados['alt_3'] ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Alternativa 4:</label>
-                            <input class="form-control" type="text" name="alt4" value="<?php echo $dados['alt_4']?>" required>
+                            <input class="form-control" type="text" name="alt4" value="<?php echo $dados['alt_4'] ?>" required>
                         </div>
                     </div>
                     <div class="row">
@@ -122,7 +131,7 @@ if($resultado == TRUE){
             </div>
         </div>
     </main>
-    <?php include_once('rodape.php')?>
+    <?php include_once('rodape.php') ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>

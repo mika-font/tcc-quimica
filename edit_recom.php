@@ -33,6 +33,20 @@ if($resultado == TRUE){
                 </div>
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Preencha todos os campos corretamente!
+                </div>
+            <?php } elseif ($msg == 2) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Faça upload de uma imagem e/ou um arquivo!
+                </div>
+        <?php }
+        endif; ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_recom.php" enctype="multipart/form-data">

@@ -31,6 +31,19 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 </div>
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Preencha todos os campos corretamente!
+                </div>
+            <?php } else if ($msg == 2) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Selecione somente 10 questões!
+                </div>
+        <?php } endif ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_questionario.php">

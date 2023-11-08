@@ -1,6 +1,7 @@
 <?php include_once("controle.php"); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,9 @@
     <link rel="shortcut icon" href="./assets/img-sistem/atomo.ico" type="image/x-icon">
     <title>Cadastrar Recomendação</title>
 </head>
+
 <body>
-    <?php include_once('cabecalho.php');?>
+    <?php include_once('cabecalho.php'); ?>
     <main class="container pb-3">
         <div class="row">
             <div class="col">
@@ -22,6 +24,20 @@
                 </div>
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Preencha todos os campos corretamente!
+                </div>
+            <?php } elseif ($msg == 2) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Faça upload de uma imagem e/ou um arquivo!
+                </div>
+        <?php }
+        endif; ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_recom.php" enctype="multipart/form-data">
@@ -59,8 +75,9 @@
             </div>
         </div>
     </main>
-    <?php include_once('rodape.php')?>
+    <?php include_once('rodape.php') ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
+
 </html>

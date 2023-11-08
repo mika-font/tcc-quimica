@@ -22,18 +22,18 @@ if (isset($_POST['cadastrar'])) {
         } else {
             $arv_img = NULL;
         }
-
+        
         $sql = "INSERT INTO questao (enunciado, imagem, alt_correta, alt_1, alt_2, alt_3, alt_4) VALUE ('$enunciado', '$arv_img', '$altcorreta', '$alt1', '$alt2', '$alt3', '$alt4')";
         $resultado = mysqli_query($conexao, $sql);
 
         if ($resultado == TRUE) {
-            header("Location: list_questao.php?msg=1"); //mensagem informando que o cadastro deu certo
+            header("Location: list_questao.php?msg=1");
         } else {
             echo mysqli_errno($conexao) . mysqli_error($conexao);
             die();
         }
     } else {
-        header("Location: cad_questao.php?msg=1"); //mensagem informando que deve preencher todos os campos
+        header("Location: cad_questao.php?msg=1");
     }
 } elseif (isset($_POST['editar'])) {
     $id_questao = $_POST['id_questao'];
@@ -68,13 +68,13 @@ if (isset($_POST['cadastrar'])) {
         $resultado = mysqli_query($conexao, $sql);
 
         if ($resultado == TRUE) {
-            header("Location: list_questao.php?msg=2"); //mensagem informando que a edição deu certo
+            header("Location: list_questao.php?msg=2");
         } else {
             echo mysqli_errno($conexao) . mysqli_error($conexao);
             die();
         }
     } else {
-        header("Location: edit_questao.php?id_questao=$id_questao&msg=1"); //mensagem informando que deve possuir campos preenchidos
+        header("Location: edit_questao.php?id_questao=$id_questao&msg=1");
     }
 } elseif (isset($_GET['deletar'])) {
     $id_questao = $_GET['deletar'];

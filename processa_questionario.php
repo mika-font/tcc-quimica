@@ -24,16 +24,16 @@ if(isset($_POST['cadastrar'])){
                 }
             }
             if($resultado == TRUE && $result == TRUE){
-                header("Location: list_questionario.php?msg=1"); //mensagem informando que deu certo
+                header("Location: list_questionario.php?msg=1");
             } else {
                 echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
                 die();
             }
         } else {
-            header("Location: cad_questionario.php?msg=2"); //mensagem informando para selecionar 10 questões somente
+            header("Location: cad_questionario.php?msg=2");
         }
     } else {
-        header("Location: cad_questionario.php?msg=1"); //mensagem informando para preencher os campos
+        header("Location: cad_questionario.php?msg=1"); 
     }
 } else if (isset($_POST['editar'])){
     $id_questionario = $_POST['id_questionario'];
@@ -46,9 +46,12 @@ if(isset($_POST['cadastrar'])){
         if(count($questoes) == 10){
             $sql = "UPDATE questionario SET date_inic='$data_inicio', date_fin='$data_termino', assunto='$assunto', titulo_quest='$titulo' WHERE id_questionario=$id_questionario";
             $resultado = mysqli_query($conexao, $sql);
-            
+
+            $atualiza = "DELETE FROM contem WHERE id_questionario = $id_questionario";
+            $consulta = mysqli_query($conexao, $atualiza);
+
             for($i=0; $i < count($questoes); $i++){
-                $sql = "UPDATE contem SET id_questao='$questoes[$i]' WHERE id_questionario=$id_questionario";
+                $sql = "INSERT INTO contem (id_questionario, id_questao) VALUE ('$id_questionario', '$questoes[$i]')";
                 $result = mysqli_query($conexao, $sql);
                 if($result == TRUE){
                     continue;
@@ -58,16 +61,16 @@ if(isset($_POST['cadastrar'])){
                 }
             }
             if($resultado == TRUE && $result == TRUE){
-                header("Location: list_questionario.php?msg=2"); //mensagem informando que deu certo
+                header("Location: list_questionario.php?msg=2");
             } else {
                 echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
                 die();
             }
         } else {
-            header("Location: edit_questionario.php?id_questionario=$id_questionario&msg=2"); //mensagem informando para selecionar 10 questões somente
+            header("Location: edit_questionario.php?id_questionario=$id_questionario&msg=2");
         }
     } else {
-        header("Location: edit_questionario.php?id_questionario=$id_questionario&msg=1"); //mensagem informando para preencher os campos
+        header("Location: edit_questionario.php?id_questionario=$id_questionario&msg=1");
     }
 } else if (isset($_GET['deletar'])){
     $id_questionario = $_GET['deletar'];
@@ -77,7 +80,7 @@ if(isset($_POST['cadastrar'])){
     $result2 = mysqli_query($conexao, $sql2);
 
     if($result == TRUE && $result2 == TRUE){
-        header("Location: list_questionario.php?msg=3"); //mensagem informando que deu certo
+        header("Location: list_questionario.php?msg=3");
     } else {
         echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
         die();
