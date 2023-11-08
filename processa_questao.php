@@ -10,7 +10,7 @@ if (isset($_POST['cadastrar'])) {
     $altcorreta = $_POST['correta'];
 
     if (!empty($enunciado) && !empty($alt1) && !empty($alt2) && !empty($alt3) && !empty($alt4) && !empty($altcorreta)) {
-        if(isset($_FILES['imagem']) && $_FILES["imagem"]["error"] == UPLOAD_ERR_OK){
+        if (isset($_FILES['imagem']) && $_FILES["imagem"]["error"] == UPLOAD_ERR_OK) {
             $imagem = $_FILES['imagem'];
             $name_img = $imagem['name'];
             $tmp_name = $imagem['tmp_name'];
@@ -78,25 +78,29 @@ if (isset($_POST['cadastrar'])) {
     }
 } elseif (isset($_GET['deletar'])) {
     $id_questao = $_GET['deletar'];
-    $sql = "SELECT * FROM questao WHERE id_questao = $id_questao";
-    $result = mysqli_query($conexao, $sql);
-
-    if($result == TRUE){
-        $sql = "DELETE FROM questao WHERE id_questao = $id_questao";
-        $resultado = mysqli_query($conexao, $sql);
-        if($resultado == FALSE){
-            echo mysqli_error($conexao);
-            header("Location: list_questao.php?msg=4");
-        } else {
-            $dados = mysqli_fetch_assoc($result);
-            if(!empty($dados['imagem'])){
-                unlink($dados['imagem']);
+    $verificador = "SELECT * FROM contem WHERE id_questao = $id_questao LIMIT 1";
+    $consulta = mysqli_query($conexao, $verificador);
+    if (mysqli_num_rows($consulta) == 0) {
+        $sql = "SELECT * FROM questao WHERE id_questao = $id_questao";
+        $result = mysqli_query($conexao, $sql);
+        if ($result == TRUE) {
+            $sql = "DELETE FROM questao WHERE id_questao = $id_questao";
+            $resultado = mysqli_query($conexao, $sql);
+            if ($resultado == FALSE) {
+                echo mysqli_error($conexao);
+                header("Location: list_questao.php?msg=4");
+            } else {
+                $dados = mysqli_fetch_assoc($result);
+                if (!empty($dados['imagem'])) {
+                    unlink($dados['imagem']);
+                }
+                header("Location: list_questao.php?msg=3");
             }
-            header("Location: list_questao.php?msg=3");
+        } else {
+            echo mysqli_errno($conexao) . mysqli_error($conexao);
+            die();
         }
     } else {
-        echo mysqli_errno($conexao) . mysqli_error($conexao);
-        die();
+        header("Location: list_questao.php?msg=4");
     }
 }
-?>
