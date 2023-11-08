@@ -79,7 +79,7 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                             <div class="col-xl-6 py-3">
                                 <div class="card text-center h-100">
                                     <div class="card-header">
-                                        <input type="checkbox" checked name="select_question[]" value="<?php echo $pergunta['id_questao'] ?>"> Questão n° <?php echo $pergunta['id_questao']; ?>
+                                        <input type="checkbox" id="checkbox" checked name="select_question[]" onclick="limitar()" value="<?php echo $pergunta['id_questao'] ?>"> Questão n° <?php echo $pergunta['id_questao']; ?>
                                     </div>
                                     <div class="card-body">
                                         <p class="card-text"><?php echo $pergunta['enunciado']; ?></p>
@@ -126,7 +126,7 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                             <div class="col-xl-6 py-3">
                                 <div class="card text-center h-100">
                                     <div class="card-header">
-                                        <input type="checkbox" name="select_question[]" value="<?php echo $questao['id_questao'] ?>"> Questão n° <?php echo $questao['id_questao']; ?>
+                                        <input type="checkbox" id="checkbox" name="select_question[]" onclick="limitar()" value="<?php echo $questao['id_questao'] ?>"> Questão n° <?php echo $questao['id_questao']; ?>
                                     </div>
                                     <div class="card-body">
                                         <p class="card-text"><?php echo $questao['enunciado']; ?></p>
@@ -161,7 +161,7 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                     <div class="row">
                         <div class="col">
                             <div class="text-end py-3">
-                                <button class="btn link-body-emphasis text-light" type="submit" name="editar" style="background-color: var(--color-purple);">Editar</button>
+                                <button class="btn link-body-emphasis text-light" type="submit" name="editar" style="background-color: var(--color-purple);" disabled>Editar</button>
                                 <a class="btn link-body-emphasis text-light" href="list_questionario.php" style="background-color: var(--color-blue);">Voltar</a>
                             </div>
                         </div>
@@ -171,6 +171,26 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
         </div>
     </main>
     <?php include_once('rodape.php') ?>
+    <script>
+        function limitar(){
+            let botaoEnvio = document.getElementById("cadastro");
+            let checkBoxes = document.querySelectorAll("#checkbox");
+            let limite = 10;
+            let selecionado = 0;
+            for (count = 0; count < checkBoxes.length; count++) {
+                if (checkBoxes[count].checked == true) {
+                    selecionado = selecionado + 1;
+                    console.log(selecionado);
+                    if (selecionado > limite || selecionado < limite) {
+                        botaoEnvio.disabled = true;
+
+                    } else {
+                        botaoEnvio.disabled = false;
+                    }
+                }
+            }
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>

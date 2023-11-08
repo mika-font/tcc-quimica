@@ -121,7 +121,6 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
             let limite = 10;
             let selecionado = 0;
             for (count = 0; count < checkBoxes.length; count++) {
-                //console.log(checkBoxes[count]);
                 if (checkBoxes[count].checked == true) {
                     selecionado = selecionado + 1;
                     console.log(selecionado);
