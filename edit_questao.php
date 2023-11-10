@@ -96,25 +96,25 @@ if ($resultado == TRUE) {
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="alt1" name="correta" <?php echo ($dados['alt_correta'] == 'alt1') ? 'checked' : '' ?>>
+                                <input class="form-check-input" type="radio" value="A" name="correta" <?php echo ($dados['alt_correta'] == 'A') ? 'checked' : '' ?>>
                                 <label class="form-check-label">Alternativa 1</label>
                             </div>
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="alt2" name="correta" <?php echo ($dados['alt_correta'] == 'alt2') ? 'checked' : '' ?>>
+                                <input class="form-check-input" type="radio" value="B" name="correta" <?php echo ($dados['alt_correta'] == 'B') ? 'checked' : '' ?>>
                                 <label class="form-check-label">Alternativa 2</label>
                             </div>
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="alt3" name="correta" <?php echo ($dados['alt_correta'] == 'alt3') ? 'checked' : '' ?>>
+                                <input class="form-check-input" type="radio" value="C" name="correta" <?php echo ($dados['alt_correta'] == 'C') ? 'checked' : '' ?>>
                                 <label class="form-check-label">Alternativa 3</label>
                             </div>
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="alt4" name="correta" <?php echo ($dados['alt_correta'] == 'alt4') ? 'checked' : '' ?>>
+                                <input class="form-check-input" type="radio" value="D" name="correta" <?php echo ($dados['alt_correta'] == 'D') ? 'checked' : '' ?>>
                                 <label class="form-check-label">Alternativa 4</label>
                             </div>
                         </div>

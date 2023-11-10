@@ -12,80 +12,31 @@ $result2 = mysqli_query($conexao, $sql2);
 
 if ($result1 == TRUE && $result2 == TRUE) {
     $info_questionario = mysqli_fetch_assoc($result1);
-    $questions = mysqli_fetch_all($result2, MYSQLI_ASSOC); 
+    $questions = mysqli_fetch_all($result2, MYSQLI_ASSOC);
 } else {
     echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
 }
 
 if (isset($_POST['enviar'])) {
     $contagem = 0;
-    $r_quest_1 = $_POST['questao1'];
-    $r_quest_2 = $_POST['questao2'];
-    $r_quest_3 = $_POST['questao3'];
-    $r_quest_4 = $_POST['questao4'];
-    $r_quest_5 = $_POST['questao5'];
-    $r_quest_6 = $_POST['questao6'];
-    $r_quest_7 = $_POST['questao7'];
-    $r_quest_8 = $_POST['questao8'];
-    $r_quest_9 = $_POST['questao9'];
-    $r_quest_10 = $_POST['questao10'];
-    if ($r_quest_1 == $questions[0]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
-    }
-    if ($r_quest_2 == $questions[1]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
-    }
-    if ($r_quest_3 == $questions[2]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
-    }
-    if ($r_quest_4 == $questions[3]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
-    }
-    if ($r_quest_5 == $questions[4]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    }
-    if ($r_quest_6 == $questions[5]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
-    }
-    if ($r_quest_7 == $questions[6]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
-    }
-    if ($r_quest_8 == $questions[7]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
-    }
-    if ($r_quest_9 == $questions[8]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
-    }
-    if ($r_quest_10 == $questions[9]['alt_correta']) {
-        $contagem++;
-        //estilizar o correto com js
-    } else {
-        //estilizar o errado com js
+    $gabarito = array();
+    $respostas = [
+        $r_quest_1 = $_POST['questao1'],
+        $r_quest_2 = $_POST['questao2'],
+        $r_quest_3 = $_POST['questao3'],
+        $r_quest_4 = $_POST['questao4'],
+        $r_quest_5 = $_POST['questao5'],
+        $r_quest_6 = $_POST['questao6'],
+        $r_quest_7 = $_POST['questao7'],
+        $r_quest_8 = $_POST['questao8'],
+        $r_quest_9 = $_POST['questao9'],
+        $r_quest_10 = $_POST['questao10']
+    ];
+    for ($i = 0; $i < count($questions); $i++) {
+        if ($respostas[$i] == $questions[$i]['alt_correta']) {
+            $contagem++;
+        }
+        $gabarito[] = $questions[$i]['alt_correta'];
     }
 }
 ?>
@@ -100,13 +51,13 @@ if (isset($_POST['enviar'])) {
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
     <link rel="stylesheet" href="./assets/css/pacote.css">
     <link rel="shortcut icon" href="./assets/img-sistem/atomo.ico" type="image/x-icon">
-    <title><?php echo $info_questionario['titulo_quest']; ?></title>
+    <title><?= $info_questionario['titulo_quest']; ?></title>
 </head>
 
 <body>
     <?php include_once('cabecalho.php'); ?>
     <main class="container pb-3">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="hidden" name="id_questionario" value="<?= $info_questionario['id_questionario'] ?>">
             <div class="row">
                 <div class="col">
@@ -133,10 +84,10 @@ if (isset($_POST['enviar'])) {
                                     <img src="<?php echo $pergunta['imagem'] ?>" height="200px" width="auto">
                                 <?php endif ?>
                                 <div class="text-start">
-                                    <p><label><input type="radio" name="questao<?php echo $i; ?>" value="alt1" required> a) <?php echo $pergunta['alt_1'] ?></label></p>
-                                    <p><label><input type="radio" name="questao<?php echo $i; ?>" value="alt2" required> b) <?php echo $pergunta['alt_2'] ?></label></p>
-                                    <p><label><input type="radio" name="questao<?php echo $i; ?>" value="alt3" required> c) <?php echo $pergunta['alt_3'] ?></label></p>
-                                    <p><label><input type="radio" name="questao<?php echo $i; ?>" value="alt4" required> d) <?php echo $pergunta['alt_4'] ?></label></p>
+                                    <p><label><input type="radio" name="questao<?= $i ?>" value="A" required> a) <?php echo $pergunta['alt_1'] ?></label></p>
+                                    <p><label><input type="radio" name="questao<?= $i ?>" value="B" required> b) <?php echo $pergunta['alt_2'] ?></label></p>
+                                    <p><label><input type="radio" name="questao<?= $i ?>" value="C" required> c) <?php echo $pergunta['alt_3'] ?></label></p>
+                                    <p><label><input type="radio" name="questao<?= $i ?>" value="D" required> d) <?php echo $pergunta['alt_4'] ?></label></p>
                                 </div>
                             </div>
                         </div>
@@ -161,11 +112,24 @@ if (isset($_POST['enviar'])) {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="resposaLabel">Seu desempenho no questionário foi o seguinte!</h5>
+                        <h5 class="modal-title" id="resposaLabel">Seu desempenho no questionário foi o seguinte:</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Você acertou <?php echo $contagem ?>/10!</p>
+                        <p>Você acertou <?php echo $contagem ?>/10</p>
+                        <table class="table table-light table-hover">
+                            <thead class="text-center">
+                                <tr><td>Gabarito</td><td>Respostas</td></tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <?php for ($i = 0; $i < count($gabarito); $i++) : ?>
+                                    <tr class="text-center">
+                                        <td><?= $gabarito[$i]; ?></td>
+                                        <td><?= $respostas[$i]; ?></td>
+                                    </td>
+                                <?php endfor ?>                                
+                            </tbody>
+                        </table>
                         <p>Suas respostas serão enviadas ao professor via email.</p>
                     </div>
                     <div class="modal-footer">

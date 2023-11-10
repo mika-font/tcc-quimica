@@ -89,25 +89,25 @@
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="alt1" name="correta">
+                                <input class="form-check-input" type="radio" value="A" name="correta">
                                 <label class="form-check-label">Alternativa 1</label>
                             </div>
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="alt2" name="correta">
+                                <input class="form-check-input" type="radio" value="B" name="correta">
                                 <label class="form-check-label">Alternativa 2</label>
                             </div>
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="alt3" name="correta">
+                                <input class="form-check-input" type="radio" value="C" name="correta">
                                 <label class="form-check-label">Alternativa 3</label>
                             </div>
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="alt4" name="correta">
+                                <input class="form-check-input" type="radio" value="D" name="correta">
                                 <label class="form-check-label">Alternativa 4</label>
                             </div>
                         </div>

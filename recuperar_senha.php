@@ -100,7 +100,7 @@ if (isset($_POST['solicitar'])) {
             <?php } endif ?>
         <div class="row">
             <div class="col">
-                <form method="POST" action="" class="">
+                <form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Nome:</label>
