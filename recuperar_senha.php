@@ -36,6 +36,7 @@ if (isset($_POST['solicitar'])) {
                     $mail->addReplyTo('cafecrimesecasos@gmail.com');
 
                     $mail->IsHTML(true); 
+                    $mail->CharSet = "UTF-8";
                     $mail->Subject = "Recuperar senha de acesso do C3";
 
                     $mensagem = "<h3>Olá ". $nome ."</h3>Uma solicitação de recuperação de senha foi realizado na plataforma C3 - Café, Crimes e Casos.<br>Sua senha temporária é " . $nova_senha . ".<br>Assim que você acessar sua conta na plataforma, solicitamos que vá na aba <b>Editar Conta</b> e altere a senha para uma senha mais segura.<br><br>Para mais informações, entre em contato conosco!";
