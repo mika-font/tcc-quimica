@@ -2,12 +2,12 @@
 include_once("controle.php");
 
 if (isset($_POST['cadastrar'])) {
-    $enunciado = $_POST['enunciado'];
-    $alt1 = $_POST['alt1'];
-    $alt2 = $_POST['alt2'];
-    $alt3 = $_POST['alt3'];
-    $alt4 = $_POST['alt4'];
-    $altcorreta = $_POST['correta'];
+    $enunciado = mysqli_escape_string($conexao, $_POST['enunciado']);
+    $alt1 = mysqli_escape_string($conexao, $_POST['alt1']);
+    $alt2 = mysqli_escape_string($conexao, $_POST['alt2']);
+    $alt3 = mysqli_escape_string($conexao, $_POST['alt3']);
+    $alt4 = mysqli_escape_string($conexao, $_POST['alt4']);
+    $altcorreta = mysqli_escape_string($conexao, $_POST['correta']);
 
     if (!empty($enunciado) && !empty($alt1) && !empty($alt2) && !empty($alt3) && !empty($alt4) && !empty($altcorreta)) {
         if (isset($_FILES['imagem']) && $_FILES["imagem"]["error"] == UPLOAD_ERR_OK) {
@@ -36,13 +36,13 @@ if (isset($_POST['cadastrar'])) {
         header("Location: cad_questao.php?msg=1");
     }
 } elseif (isset($_POST['editar'])) {
-    $id_questao = $_POST['id_questao'];
-    $enunciado = $_POST['enunciado'];
-    $alt1 = $_POST['alt1'];
-    $alt2 = $_POST['alt2'];
-    $alt3 = $_POST['alt3'];
-    $alt4 = $_POST['alt4'];
-    $altcorreta = $_POST['correta'];
+    $id_questao = mysqli_escape_string($conexao, $_POST['id_questao']);
+    $enunciado = mysqli_escape_string($conexao, $_POST['enunciado']);
+    $alt1 = mysqli_escape_string($conexao, $_POST['alt1']);
+    $alt2 = mysqli_escape_string($conexao, $_POST['alt2']);
+    $alt3 = mysqli_escape_string($conexao, $_POST['alt3']);
+    $alt4 = mysqli_escape_string($conexao, $_POST['alt4']);
+    $altcorreta = mysqli_escape_string($conexao, $_POST['correta']);
 
     if (!empty($enunciado) && !empty($alt1) && !empty($alt2) && !empty($alt3) && !empty($alt4) && !empty($altcorreta)) {
         if (isset($_FILES['imagem']) && $_FILES["imagem"]["error"] == UPLOAD_ERR_OK) {
@@ -77,7 +77,7 @@ if (isset($_POST['cadastrar'])) {
         header("Location: edit_questao.php?id_questao=$id_questao&msg=1");
     }
 } elseif (isset($_GET['deletar'])) {
-    $id_questao = $_GET['deletar'];
+    $id_questao = mysqli_escape_string($conexao, $_GET['deletar']);
     $verificador = "SELECT * FROM contem WHERE id_questao = $id_questao LIMIT 1";
     $consulta = mysqli_query($conexao, $verificador);
     if (mysqli_num_rows($consulta) == 0) {

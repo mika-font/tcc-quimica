@@ -32,7 +32,7 @@ function recortarText($texto)
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
     <link rel="stylesheet" href="./assets/css/pacote.css">
     <link rel="shortcut icon" href="./assets/img-sistem/atomo.ico" type="image/x-icon">
-    <title>Menu - <?php echo $dados['nome'] ?></title>
+    <title>Menu - <?= $dados['nome'] ?></title>
 </head>
 
 <body>

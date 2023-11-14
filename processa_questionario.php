@@ -2,10 +2,10 @@
 include_once('controle.php');
 
 if(isset($_POST['cadastrar'])){
-    $titulo = $_POST['titulo'];
-    $assunto = $_POST['assunto'];
-    $data_inicio = $_POST['data_inicio'];
-    $data_termino = $_POST['data_termino'];
+    $titulo = mysqli_escape_string($conexao, $_POST['titulo']);
+    $assunto = mysqli_escape_string($conexao, $_POST['assunto']);
+    $data_inicio = mysqli_escape_string($conexao, $_POST['data_inicio']);
+    $data_termino = mysqli_escape_string($conexao, $_POST['data_termino']);
     $questoes = $_POST['select_question'];
     if(!empty($titulo) && !empty($assunto) && !empty($data_inicio) && !empty($data_termino)){
         if(count($questoes) == 10){
@@ -36,11 +36,11 @@ if(isset($_POST['cadastrar'])){
         header("Location: cad_questionario.php?msg=1"); 
     }
 } else if (isset($_POST['editar'])){
-    $id_questionario = $_POST['id_questionario'];
-    $titulo = $_POST['titulo'];
-    $assunto = $_POST['assunto'];
-    $data_inicio = $_POST['data_inicio'];
-    $data_termino = $_POST['data_termino'];
+    $id_questionario = mysqli_escape_string($conexao, $_POST['id_questionario']);
+    $titulo = mysqli_escape_string($conexao, $_POST['titulo']);
+    $assunto = mysqli_escape_string($conexao, $_POST['assunto']);
+    $data_inicio = mysqli_escape_string($conexao, $_POST['data_inicio']);
+    $data_termino = mysqli_escape_string($conexao, $_POST['data_termino']);
     $questoes = $_POST['select_question'];
     if(!empty($titulo) && !empty($assunto) && !empty($data_inicio) && !empty($data_termino)){
         if(count($questoes) == 10){
@@ -73,7 +73,7 @@ if(isset($_POST['cadastrar'])){
         header("Location: edit_questionario.php?id_questionario=$id_questionario&msg=1");
     }
 } else if (isset($_GET['deletar'])){
-    $id_questionario = $_GET['deletar'];
+    $id_questionario = mysqli_escape_string($conexao, $_GET['deletar']);
     $sql = "DELETE FROM contem WHERE id_questionario=$id_questionario";
     $sql2 = "DELETE FROM questionario WHERE id_questionario=$id_questionario";
     $result = mysqli_query($conexao, $sql);

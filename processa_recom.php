@@ -1,8 +1,8 @@
 <?php
 include_once("controle.php");
 if (isset($_POST['cadastrar'])) {
-    $titulo = $_POST['titulo'];
-    $sinopse = $_POST['sinopse'];
+    $titulo = mysqli_escape_string($conexao, $_POST['titulo']);
+    $sinopse = mysqli_escape_string($conexao, $_POST['sinopse']);
     $imagem = $_FILES['imagem'];
     $arquivo = $_FILES['arquivo'];
     if (!empty($titulo) && !empty($sinopse)) {
@@ -41,9 +41,9 @@ if (isset($_POST['cadastrar'])) {
         header("Location: cad_recom.php?msg=1"); 
     }
 } else if ($_POST['editar']) {
-    $id_recom = $_POST['id_recom'];
-    $titulo = $_POST['titulo'];
-    $sinopse = $_POST['sinopse'];
+    $id_recom = mysqli_escape_string($conexao, $_POST['id_recom']);
+    $titulo = mysqli_escape_string($conexao, $_POST['titulo']);
+    $sinopse = mysqli_escape_string($conexao, $_POST['sinopse']);
     if (!empty($titulo) && !empty($sinopse)) {
         $diretorio = "uploads/";
         if (isset($_FILES['arquivo'])) {
@@ -92,7 +92,7 @@ if (isset($_POST['cadastrar'])) {
         header("Location: edit_recom.php?id_recom=$id_recom&msg=1");
     }
 } else if ($_GET['deletar']) {
-    $id_recom = $_GET['deletar'];
+    $id_recom = mysqli_escape_string($conexao, $_GET['deletar']) ;
     $sql = "SELECT * FROM recomendacao WHERE id_recom=$id_recom";
     $result = mysqli_query($conexao, $sql);
     if($result == TRUE){

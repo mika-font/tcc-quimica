@@ -4,10 +4,10 @@ if (isset($_POST['cadastrar'])) {
     include_once('conexao.php');
     $conexao = conectar();  
 
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $repetirSenha = $_POST['repetirSenha'];
+    $nome = mysqli_escape_string($conexao, $_POST['nome']);
+    $email = mysqli_escape_string($conexao, $_POST['email']);
+    $senha = mysqli_escape_string($conexao, $_POST['senha']);
+    $repetirSenha = mysqli_escape_string($conexao, $_POST['repetirSenha']);
     if (!empty($nome) && !empty($email) && !empty($senha) && !empty($repetirSenha)) {
         $tipo = 0;
         if ($senha == $repetirSenha) {
@@ -32,12 +32,12 @@ if (isset($_POST['cadastrar'])) {
 } else if (isset($_POST['editar'])) {
     include_once('controle.php');
 
-    $id_usuario = $_POST['id_usuario'];
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $repetirSenha = $_POST['repetirSenha'];
-    $tipo = $_POST['tipo'];
+    $id_usuario = mysqli_escape_string($conexao, $_POST['id_usuario']);
+    $nome = mysqli_escape_string($conexao, $_POST['nome']);
+    $email = mysqli_escape_string($conexao, $_POST['email']);
+    $senha = mysqli_escape_string($conexao, $_POST['senha']);
+    $repetirSenha = mysqli_escape_string($conexao, $_POST['repetirSenha']);
+    $tipo = mysqli_escape_string($conexao, $_POST['tipo']);
 
     if (!empty($nome) && !empty($email) && !empty($senha) && !empty($repetirSenha)) {
         if ($senha == $repetirSenha) {
@@ -62,7 +62,7 @@ if (isset($_POST['cadastrar'])) {
     }
 } else if (isset($_GET['deletar'])) {
     include_once('controle.php');
-    $id_usuario = $_GET['deletar'];
+    $id_usuario = mysqli_escape_string($conexao, $_GET['deletar']);
     $sql = "DELETE FROM usuario WHERE id_usuario = $id_usuario";
     $resultado = mysqli_query($conexao, $sql);
 

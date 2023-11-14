@@ -2,10 +2,10 @@
 include_once('controle.php');
 
 if (isset($_POST['cadastrar'])) {
-    $titulo = $_POST['titulo'];
-    $local = $_POST['local'];
-    $date = $_POST['data'];
-    $descricao = $_POST['texto'];
+    $titulo = mysqli_escape_string($conexao, $_POST['titulo']);
+    $local = mysqli_escape_string($conexao, $_POST['local']);
+    $date = mysqli_escape_string($conexao, $_POST['data']);
+    $descricao = mysqli_escape_string($conexao, $_POST['texto']);
 
     if (!empty($titulo) && !empty($local) && !empty($date) && !empty($descricao) && !empty($_FILES['imagem'])) {
         $sql = "INSERT INTO caso (titulo, local, data, descricao) VALUE ('$titulo', '$local', '$date', '$descricao')";
@@ -42,11 +42,11 @@ if (isset($_POST['cadastrar'])) {
         header("Location: cad_casos.php?msg=1");
     }
 } else if (isset($_POST['editar'])) {
-    $id_caso = $_POST['id_caso'];
-    $titulo = $_POST['titulo'];
-    $local = $_POST['local'];
-    $date = $_POST['data'];
-    $descricao = $_POST['texto'];
+    $id_caso = mysqli_escape_string($conexao, $_POST['id_caso']);
+    $titulo = mysqli_escape_string($conexao, $_POST['titulo']);
+    $local = mysqli_escape_string($conexao, $_POST['local']);
+    $date = mysqli_escape_string($conexao, $_POST['data']);
+    $descricao = mysqli_escape_string($conexao, $_POST['texto']);
 
     if (!empty($titulo) && !empty($local) && !empty($date) && !empty($descricao)) {
         $sql = "UPDATE caso SET titulo='$titulo', local='$local', data='$date', descricao='$descricao' WHERE id_caso='$id_caso'";
@@ -98,7 +98,7 @@ if (isset($_POST['cadastrar'])) {
     }
 
 } else if (isset($_GET['deletar'])) {
-    $id_caso = $_GET['deletar'];
+    $id_caso = mysqli_escape_string($conexao, $_GET['deletar']);
     $sql = "SELECT * FROM imagem WHERE id_caso='$id_caso'";
     $consulta = mysqli_query($conexao, $sql);
     while ($dados = mysqli_fetch_assoc($consulta)) {
