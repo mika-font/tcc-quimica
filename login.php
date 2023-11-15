@@ -4,23 +4,25 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
     $conexao = conectar();
     session_start();
 
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+    $email = mysqli_escape_string($conexao, $_POST['email']);
+    $senha = mysqli_escape_string($conexao, $_POST['senha']);
 
-    $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
-    $resultado = mysqli_query($conexao, $sql);
-
-    if (mysqli_num_rows($resultado) == 1) {
-        $dados = mysqli_fetch_assoc($resultado);
-
-        $_SESSION['email'] = $email;
-        $_SESSION['id_usuario'] = $dados['id_usuario'];
-        $_SESSION['tipo'] = $dados['tipo'];
-
-        header("Location: central.php");
+    $comando = "SELECT * FROM usuario WHERE email = '$email'";
+    $consulta = mysqli_query($conexao, $comando);
+    if (mysqli_num_rows($consulta) == 1) {
+        $senha_bd = mysqli_fetch_assoc($consulta);
+        if (password_verify($senha, $senha_bd['senha'])) {
+            $_SESSION['email'] = $email;
+            $_SESSION['id_usuario'] = $senha_bd['id_usuario'];
+            $_SESSION['tipo'] = $senha_bd['tipo'];
+            header("Location: central.php");
+        } else {
+            session_destroy();
+            $msg = 2;
+        }
     } else if (mysqli_num_rows($resultado) > 1 or mysqli_num_rows($resultado) == 0) {
         session_destroy();
-        $msg = 2;
+        $msg = 3;
     }
 }
 ?>
@@ -71,13 +73,18 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
                                     Usuário cadastrado com sucesso!
                                 </div>
                             <?php }
-                        } else if (isset($msg)) { ?>
+                        } else if (isset($msg) && $msg = 2) { ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <button class="btn-close" data-bs-dismiss="alert"></button>
-                                Senha ou Email incorreto, verifique suas credenciais!
+                                Senha incorreta, verifique suas credenciais!
+                            </div>
+                        <?php } else if (isset($msg) && $msg == 3) { ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button class="btn-close" data-bs-dismiss="alert"></button>
+                                Email não consta em nosso banco, verifique suas credenciais!
                             </div>
                         <?php } ?>
-                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                        <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
                             <div class="row">
                                 <div class="col-xl-12 py-2">
                                     <label class="form-label">

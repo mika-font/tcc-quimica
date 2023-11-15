@@ -46,6 +46,14 @@ function recortarText($texto)
                 </div>   
             </div>
         </div>
+        <?php if (isset($_GET['msg'])) :
+            $msg = $_GET['msg'];
+            if ($msg == 1) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Conta atualizada com sucesso!
+                </div>
+            <?php } endif ?>
         <div class="row">
             <div class="col-xl-5">
                 <div class="text-center aling-center">

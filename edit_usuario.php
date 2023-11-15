@@ -43,7 +43,12 @@ $dados = mysqli_fetch_assoc($resultado);
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     As senhas devem ser iguais!
                 </div>
-        <?php } 
+        <?php } else if ($msg == 3) { ?> 
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button class="btn-close" data-bs-dismiss="alert"></button>
+                    Já existe uma conta cadastrada com este email!
+                </div>
+        <?php }        
         endif ?>
         <div class="row">
             <div class="col">
