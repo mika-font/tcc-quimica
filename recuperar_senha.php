@@ -10,15 +10,16 @@ require 'PHPMailer-master/src/Exception.php';
 
 if (isset($_POST['solicitar'])) {
     $nova_senha = substr(md5(time()), 0, 6);
-    $email = $_POST['email'];
-    $nome = $_POST['nome'];
+    $senha_cript = password_hash($nova_senha, PASSWORD_DEFAULT);
+    $email = mysqli_escape_string($conexao, $_POST['email']);
+    $nome = mysqli_escape_string($conexao, $_POST['nome']);
 
-    $sql = "SELECT * FROM usuario WHERE email = '$email' LIMIT 1";
+    $sql = "SELECT * FROM usuario WHERE email = '$email'";
     $resultado = mysqli_query($conexao, $sql);
 
     if ($resultado == TRUE) {
         if (mysqli_num_rows($resultado) == 1) {
-            $sql = "UPDATE usuario SET senha = '$nova_senha' WHERE email = '$email'";
+            $sql = "UPDATE usuario SET senha = '$senha_cript' WHERE email = '$email'";
             $resultado = mysqli_query($conexao, $sql);
             if ($resultado == TRUE) {
                 try {
