@@ -49,11 +49,10 @@ if ($result_casos == TRUE) {
             <div class="col-xl-6">
                 <h3 class="h1 text-center">Seja Bem-Vindo ao C₃!</h3>
                 <div class="msg_inic py-2 text-wrap">
-                    <p class="mb-1">Uma plataforma exclusiva e perfeita para a comunidade interessada na química forense e investigação criminal.</p>
-                    <p class="mb-1">Unindo produções midiáticas, casos criminais e conteúdos introdutórios e completos acerca do mundo da criminologia,
-                        nossa equipe prepara materiais exclusivos e outras atividades com muita dedicação para você, caro curioso, que deseja aprofundar nesse universo incrível!</p>
-                    <p class="mb-1">Ficou curioso?</p>
-                    <p class="mb-1">Então cadastre-se e aproveite ao máximo a experiência!</p>
+                    <p>Conheça a C3, uma plataforma exclusiva e dedicada à comunidade interessada pela química forense e investigação criminal. 
+                    Unindo conteúdos completos e repletos de imagens com recomendações de produções midiáticas, materiais complementares e casos criminais famosos, a C3 tem a honra de tê-lo como estudante, caro investigador(a).
+                    Está preparado para conhecer esse universo incrível? Então cadastre-se e aproveite ao máximo a experiência e investigue cada canto dessa plataforma!
+                    </p>
                 </div>
                 <div class="text-center p-4 m-4">
                     <a href="cad_usuario.php" class="btn text-light" style="background-color: var(--color-purple);">Cadastre-se</a>

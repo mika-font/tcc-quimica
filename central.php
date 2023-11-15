@@ -62,15 +62,17 @@ function recortarText($texto)
             </div>
             <div class="col-xl-7">
                 <div class="text-wrap msg_inic">
-                    <p class="mb-1">Esta plataforma foi especialmente elaborada para introduzí-lo no mundo da criminologia.</p>
-                    <p class="mb-1">Não deixe de visitar a aba de conteúdos, onde desenvolvemos materiais completos e repleto de imagens para demonstrar as diferentes situações que um perito criminal poderá enfrentar na sua carreira.
-                    E para treinar seus conhecimentos, visite a aba de questionários e responda as questões relacionadas ao conteúdo estudado, as respostas serão entregues à equipe pedagógica da plataforma para avaliarmos seu andamento e a efetividade do ensino, sua ajuda é extremamente importante.</p>
+                    <p>Esta plataforma foi especialmente elaborada para introduzí-lo no mundo da criminologia.
+                    Aproveite cada cantinho da C3, pois cada aba foi pensada especialmente nos seus estudos.
+                    Não deixe de visitar a aba de conteúdos, onde desenvolvemos materiais completos e repletos de imagens para demonstrar as diferentes situações que um perito criminal poderá enfrentar na sua carreira. Além disso, veja conheça alguns casos criminais abaixo, procuramos sempre atualizar a plataforma com novos e antigos casos ao redor do globo!
+                    E para treinar seus conhecimentos, visite a aba de questionários e responda as questões relacionadas ao conteúdo estudado, pois as respostas serão entregues à equipe pedagógica da plataforma para avaliarmos seu andamento e a efetividade do ensino, uma vez que sua ajuda é extremamente importante!
+                    Vale lembrar que existe um período de tempo em que o questionário aceita respostas, então atente-se ao cronograma. </p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h4>Veja alguns casos criminais...</h4>
+                <h4>Conheça alguns Casos Criminais...</h4>
                 <hr>
             </div>
         </div>
@@ -107,7 +109,7 @@ function recortarText($texto)
         <hr>
         <div class="row">
             <div class="col">
-                <h4>Leia e assista algumas recomendações...</h4>
+                <h4>Leia e obtenha algumas Recomendações...</h4>
                 <hr>
             </div>
         </div>

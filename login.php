@@ -46,9 +46,9 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
         <div class="row">
             <div class="col-xl-8">
                 <div class="container text-light text-center text-login">
-                    <h1>Bem vindo ao...</h1>
-                    <h1>C₃ - Café, Crimes e Casos</h1>
-                    <p>Descubra os segredos da química forense com a plataforma C3. A teoria e prática se unem em apenas uma interface interativa para desenvolver suas habilidades analíticas. Acesse de qualquer lugar e aprofunde seus conhecimentos na investigação criminal e química forense.</p>
+                    <h1>Seja Bem vindo(a) ao...</h1>
+                    <h1><em>C₃ - Café, Crimes e Casos</em></h1>
+                    <p>Descubra os segredos da química forense com a plataforma C3. A teoria e prática se unem em uma interface interativa para adentrar-se no mundo da criminologia. Acesse de qualquer computador e aprofunde seus conhecimentos na química forense e investigação criminal.</p>
                 </div>
             </div>
             <div class="col-xl-4">
