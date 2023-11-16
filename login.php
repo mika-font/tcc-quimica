@@ -9,6 +9,7 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
 
     $comando = "SELECT * FROM usuario WHERE email = '$email'";
     $consulta = mysqli_query($conexao, $comando);
+
     if (mysqli_num_rows($consulta) == 1) {
         $senha_bd = mysqli_fetch_assoc($consulta);
         if (password_verify($senha, $senha_bd['senha'])) {
@@ -20,7 +21,7 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
             session_destroy();
             $msg = 2;
         }
-    } else if (mysqli_num_rows($resultado) > 1 or mysqli_num_rows($resultado) == 0) {
+    } else if (mysqli_num_rows($consulta) > 1 or mysqli_num_rows($consulta) == 0) {
         session_destroy();
         $msg = 3;
     }
@@ -73,7 +74,7 @@ if (isset($_POST['acessar']) && !empty($_POST['email']) && !empty($_POST['senha'
                                     Usuário cadastrado com sucesso!
                                 </div>
                             <?php }
-                        } else if (isset($msg) && $msg = 2) { ?>
+                        } else if (isset($msg) && $msg == 2) { ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <button class="btn-close" data-bs-dismiss="alert"></button>
                                 Senha incorreta, verifique suas credenciais!
