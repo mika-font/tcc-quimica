@@ -61,7 +61,7 @@ $dados = mysqli_fetch_assoc($resultado);
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php $sql = "SELECT * FROM usuario";
+                            <?php $sql = "SELECT * FROM usuario WHERE tipo = 0";
                             $result = mysqli_query($conexao, $sql);
                             $usuarios = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             foreach ($usuarios as $usuario) { ?>

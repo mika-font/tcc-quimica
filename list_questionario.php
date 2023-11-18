@@ -100,8 +100,9 @@ function date_verify($date_bd_inicio, $date_bd_final){
                                         <td><button href="visualizar_questionario.php?questionario=<?= $questionario['id_questionario']?>" class="card-link btn text-light" style="background-color: var(--color-purple);" disabled>Responder</button></td>
                                     <?php } ?>
                                     <?php if ($user['tipo'] == 1) : ?>
-                                        <td><a href="edit_questionario.php?id_questionario=<?php echo $questionario['id_questionario']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a></td>
+                                        <td><a href="edit_questionario.php?id_questionario=<?= $questionario['id_questionario']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a></td>
                                         <td><button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $questionario['id_questionario']; ?>">Excluir</button></td>
+                                        <td><a href="#" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar Respostas</a></td>
                                     <?php endif; ?>
                                 </tr>
                                 <div class="modal fade" id="excluir<?= $questionario['id_questionario']; ?>" tabindex="-1" aria-labelledby="excluirlabel<?= $questionario['id_questionario']; ?>" aria-hidden="true">
