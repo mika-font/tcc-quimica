@@ -212,7 +212,6 @@
                 <p>Cansou? É um pouco cansativo sim com essa quantidade de classificações, mas são de extrema importância para resolução de um caso. Siga para o módulo II, onde trabalharemos as diferentes técnicas de revelação de uma impressão digital.</p>
                 <div class="p-2 text-end">
                     <p><a href="tecnicas_revel.php">Clique aqui!</a></p>
-                    <a href="../gerarpdf.php" class="btn link-body-emphasis text-light" style="background-color: var(--color-purple);">Gerar PDF</a>
                 </div>
             </div>
         </div>

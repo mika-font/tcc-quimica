@@ -121,11 +121,6 @@
                 <p>Para testar seus conhecimentos a respeito deste conteúdo e pôr em prática o que foi ensinado, responda este questionário sobre o assunto Datiloscopia: <a href="">Clique aqui!</a></p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xl-12 p-2 text-end">
-                <a href="../gerarpdf.php" class="btn link-body-emphasis text-light" style="background-color: var(--color-purple);">Gerar PDF</a>
-            </div>
-        </div>
     </main>
     <?php include_once('rodape_intro.php') ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

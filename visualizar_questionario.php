@@ -180,8 +180,13 @@ if (isset($_POST['enviar'])) {
                             <tbody class="table-group-divider">
                                 <?php for ($i = 0; $i < count($gabarito); $i++) : ?>
                                     <tr class="text-center">
-                                        <td><?= $gabarito[$i]; ?></td>
-                                        <td><?= $respostas[$i]; ?></td>
+                                        <?php if ($gabarito[$i] == $respostas[$i]) { ?>
+                                            <td style="background-color:var(--color-green)"><?= $gabarito[$i]; ?></td>
+                                            <td style="background-color:var(--color-green)"><?= $respostas[$i]; ?></td>
+                                        <?php } else { ?>
+                                            <td style="background-color:var(--color-red)"><?= $gabarito[$i]; ?></td>
+                                            <td style="background-color:var(--color-red)"><?= $respostas[$i]; ?></td>
+                                        <?php } ?>
                                     </tr>
                                 <?php endfor ?>
                             </tbody>

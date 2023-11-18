@@ -6,6 +6,7 @@
     --color-blue-dark: rgb(26, 7, 56);
     --color-blue: rgb(23, 134, 134);
     --color-red: rgb(179, 2, 2);
+    --color-green: rgb(12, 143, 1);
 }
 .msg_inic {
     text-align: justify;
