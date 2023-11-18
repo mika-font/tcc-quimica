@@ -1,14 +1,6 @@
 <?php
 include_once('controle.php');
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer-master/src/SMTP.php';
-require 'PHPMailer-master/src/Exception.php';
-
 if (isset($_GET['questionario'])) {
     $id_questionario = $_GET['questionario'];
 } else {
@@ -47,50 +39,10 @@ if (isset($_POST['enviar'])) {
         }
         $gabarito[] = $questions[$i]['alt_correta'];
     }
-    $nome_questionario = $info_questionario['titulo_quest'];
-
+    
     $id_usuario = $_SESSION['id_usuario'];
-    $comando = "SELECT nome, email FROM usuario WHERE id_usuario = $id_usuario";
-    $busca = mysqli_query($conexao, $comando);
-    $usuario = mysqli_fetch_assoc($busca);
-    $nome_aluno = $usuario['nome'];
-    $email_aluno = $usuario['email'];
-
-    $sql = "SELECT nome, email FROM usuario WHERE tipo = 1";
-    $busca2 = mysqli_query($conexao, $sql);
-    $professor = mysqli_fetch_assoc($busca2);
-    $nome_prof = $professor['nome'];
-    $email_prof = $professor['email'];
-
-    try {
-        $mail = new PHPMailer();
-        $mail->IsSMTP();
-        $mail->Host = "smtp.gmail.com";
-        $mail->SMTPAuth = true;
-        $mail->Username = 'cafecrimesecasos@gmail.com';
-        $mail->Password = '';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
-
-        $mail->setFrom('cafecrimesecasos@gmail.com', 'C3 - Café, Crimes e Casos');
-        $mail->addAddress($email_prof, $nome_prof);
-        $mail->addReplyTo('cafecrimesecasos@gmail.com');
-
-        $mail->IsHTML(true);
-        $mail->CharSet = "UTF-8";
-        $mail->Subject = "Respostas do Questionário";
-
-        $mensagem = "<h3>Olá " . $nome_prof . "</h3>Um aluno, chamado " . $nome_aluno . " de endereço de email " . $email_aluno . " respondeu o questionário: <b>" . $nome_questionario . "</b>.<br>Veja suas respostas:<br><table><thead><tr><td>Gabarito</td><td>Respostas</td></tr></thead><tbody>";
-        for ($i = 0; $i < count($gabarito); $i++) :
-            $mensagem .= "<tr><td>" . $gabarito[$i] . "</td><td>" . $respostas[$i] . "</td></tr>";
-        endfor;
-        $mensagem .= "</tbody></table>";
-
-        $mail->Body = $mensagem;
-        $mail->send();
-    } catch (Exception $e) {
-        echo "Erro ao enviar o email: {$mail->ErrorInfo}";
-    }
+    $comando = "INSERT INTO responde VALUE ('$id_usuario', '$id_questionario', '$contagem')";
+    $consulta = mysqli_query($conexao, $comando);
 }
 ?>
 
@@ -191,7 +143,7 @@ if (isset($_POST['enviar'])) {
                                 <?php endfor ?>
                             </tbody>
                         </table>
-                        <p>Suas respostas serão enviadas ao professor via email.</p>
+                        <p>Suas respostas serão enviadas ao professor.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn text-light" data-bs-dismiss="modal" style="background-color: var(--color-purple);">Fechar</button>
