@@ -59,21 +59,21 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                     <div class="row">
                         <div class="col-xl-6 py-2">
                             <input type="hidden" name="id_questionario" value="<?= $id_questionario; ?>">
-                            <label class="form-label">Título:</label>
+                            <label class="form-label">Título:*</label>
                             <input class="form-control" type="text" name="titulo" value="<?php echo $info_quest['titulo_quest']; ?>" required>
                         </div>
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Assunto:</label>
+                            <label class="form-label">Assunto:*</label>
                             <input class="form-control" type="text" name="assunto" value="<?php echo $info_quest['assunto']; ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Data de Início:</label>
+                            <label class="form-label">Data de Início:*</label>
                             <input class="form-control" type="date" name="data_inicio" value="<?php echo $info_quest['date_inic']; ?>" required>
                         </div>
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Data de Término:</label>
+                            <label class="form-label">Data de Término:*</label>
                             <input class="form-control" type="date" name="data_termino" value="<?php echo $info_quest['date_fin']; ?>" required>
                         </div>
                     </div>
@@ -126,7 +126,7 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2 text-center">
-                            <span>Selecione as questões que irão compor o questionário.</span>
+                            <span>Selecione as questões que irão compor o questionário:</span>
                         </div>
                     </div>
                     <div class="row">

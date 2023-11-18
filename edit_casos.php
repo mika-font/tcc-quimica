@@ -42,29 +42,29 @@ $dados = mysqli_fetch_assoc($resultado);
             <div class="row">
                 <div class="col-xl-12 py-2">
                     <input type="hidden" name="id_caso" value="<?php echo $dados['id_caso'] ?>">
-                    <label class="form-label">Título:</label>
+                    <label class="form-label">Título:*</label>
                     <input class="form-control" type="text" name="titulo" value="<?php echo $dados['titulo'] ?>" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-6 py-2">
-                    <label class="form-label">Local:</label>
+                    <label class="form-label">Local:*</label>
                     <input class="form-control" type="text" name="local" value="<?php echo $dados['local'] ?>" required>
                 </div>
                 <div class="col-xl-6 py-2">
-                    <label class="form-label">Data:</label>
+                    <label class="form-label">Data:*</label>
                     <input class="form-control" type="date" name="data" value="<?php echo $dados['data'] ?>" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12 py-2">
-                    <label class="form-label">Descrição: </label>
+                    <label class="form-label">Descrição:* </label>
                     <textarea class="form-control" name="texto" id="texto" cols="100" rows="30" required><?php echo $dados['descricao'] ?></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12 py-2">
-                    <label class="form-label">Imagem(ns):</label>
+                    <label class="form-label">Imagem(ns):*</label>
                     <input class="form-control" type="file" name="imagem[]" multiple required>
                 </div>
             </div>

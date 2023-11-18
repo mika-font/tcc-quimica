@@ -49,27 +49,27 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <form method="POST" action="processa_questionario.php">
                     <div class="row">
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Título:</label>
+                            <label class="form-label">Título:*</label>
                             <input class="form-control" type="text" name="titulo" required>
                         </div>
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Assunto:</label>
+                            <label class="form-label">Assunto:*</label>
                             <input class="form-control" type="text" name="assunto" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Data de Início:</label>
+                            <label class="form-label">Data de Início:*</label>
                             <input class="form-control" type="date" name="data_inicio" required>
                         </div>
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Data de Término:</label>
+                            <label class="form-label">Data de Término:*</label>
                             <input class="form-control" type="date" name="data_termino" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2 text-center">
-                            <span>Selecione 10 questões para compor o questionário.</span>
+                            <span>Selecione 10 questões para compor o questionário:*</span>
                         </div>
                     </div>
                     <div class="row">

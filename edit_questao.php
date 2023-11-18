@@ -51,7 +51,7 @@ if ($resultado == TRUE) {
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <input type="hidden" name="id_questao" value="<?php echo $dados['id_questao'] ?>">
-                            <label class="form-label">Enunciado:</label>
+                            <label class="form-label">Enunciado:*</label>
                             <textarea class="form-control" name="enunciado" id="enunciado" cols="100" rows="30" required><?php echo $dados['enunciado'] ?></textarea>
                         </div>
                     </div>
@@ -63,36 +63,36 @@ if ($resultado == TRUE) {
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2 text-center">
-                            <span>Escreva as alternativas.</span>
+                            <span>Escreva as alternativas:</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
-                            <label class="form-label">Alternativa 1:</label>
+                            <label class="form-label">Alternativa 1:*</label>
                             <input class="form-control" type="text" name="alt1" value="<?php echo $dados['alt_1'] ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
-                            <label class="form-label">Alternativa 2:</label>
+                            <label class="form-label">Alternativa 2:*</label>
                             <input class="form-control" type="text" name="alt2" value="<?php echo $dados['alt_2'] ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
-                            <label class="form-label">Alternativa 3:</label>
+                            <label class="form-label">Alternativa 3:*</label>
                             <input class="form-control" type="text" name="alt3" value="<?php echo $dados['alt_3'] ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
-                            <label class="form-label">Alternativa 4:</label>
+                            <label class="form-label">Alternativa 4:*</label>
                             <input class="form-control" type="text" name="alt4" value="<?php echo $dados['alt_4'] ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-center py-2">
-                            <span>Escolha a alternativa correta.</span>
+                            <span>Escolha a alternativa correta:*</span>
                         </div>
                         <div class="col-xl-3 py-2">
                             <div class="form-check">

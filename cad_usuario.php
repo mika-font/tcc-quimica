@@ -48,21 +48,21 @@
                 <form method="POST" action="processa_usuario.php" class="form-cad-user">
                     <div class="row">
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Nome:</label>
+                            <label class="form-label">Nome:*</label>
                             <input class="form-control" type="text" name="nome" class="input" required>
                         </div>
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Email:</label>
+                            <label class="form-label">Email:*</label>
                             <input class="form-control" type="email" name="email" class="input" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Senha:</label>
+                            <label class="form-label">Senha:*</label>
                             <input class="form-control" type="password" name="senha" class="input" required> 
                         </div>
                         <div class="col-xl-6 py-2">
-                            <label class="form-label">Repetir Senha:</label>
+                            <label class="form-label">Repetir Senha:*</label>
                             <input class="form-control" type="password" name="repetirSenha" class="input" required>
                         </div>
                     </div>

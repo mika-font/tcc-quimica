@@ -35,29 +35,29 @@
         <form method="POST" action="processa_casos.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-xl-12 py-2">
-                    <label class="form-label">Título:</label>
+                    <label class="form-label">Título:*</label>
                     <input class="form-control" type="text" name="titulo" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-6 py-2">
-                    <label class="form-label">Local:</label>
+                    <label class="form-label">Local:*</label>
                     <input class="form-control" type="text" name="local" required>
                 </div>
                 <div class="col-xl-6 py-2">
-                    <label class="form-label">Data:</label>
+                    <label class="form-label">Data:*</label>
                     <input class="form-control" type="date" name="data" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12 py-2">
-                    <label class="form-label">Descrição: </label>
+                    <label class="form-label">Descrição:* </label>
                     <textarea class="form-control" name="texto" id="texto" cols="100" rows="30" required></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12 py-2">
-                    <label class="form-label">Imagem(ns):</label>
+                    <label class="form-label">Imagem(ns):*</label>
                     <input class="form-control" type="file" name="imagem[]" multiple required>
                 </div>
             </div>

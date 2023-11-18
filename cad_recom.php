@@ -43,17 +43,20 @@
                 <form method="POST" action="processa_recom.php" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-xl-12 py-2">
-                            <label class="form-label">Título:</label>
+                            <label class="form-label">Título:*</label>
                             <input class="form-control" type="text" name="titulo" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
-                            <label class="form-label">Sinopse:</label>
+                            <label class="form-label">Sinopse:*</label>
                             <textarea class="form-control" type="text" name="sinopse" id="sinopse" cols="100" rows="30" required></textarea>
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-xl-12 py-2 text-center">
+                            <span>Sua recomendação poderá ter uma imagem e/ou um arquivo:*</span>
+                        </div>
                         <div class="col-xl-6 py-2">
                             <label class="form-label">Arquivo:</label>
                             <input class="form-control" type="file" name="arquivo">

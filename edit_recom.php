@@ -53,17 +53,20 @@ if($resultado == TRUE){
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <input type="hidden" name="id_recom" value="<?php echo $dados['id_recom']?>">
-                            <label class="form-label">Título:</label>
+                            <label class="form-label">Título:*</label>
                             <input class="form-control" type="text" name="titulo" value="<?php echo $dados['titulo']?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
-                            <label class="form-label">Sinopse:</label>
+                            <label class="form-label">Sinopse:*</label>
                             <textarea class="form-control" type="text" name="sinopse" id="sinopse" cols="100" rows="30" required><?php echo $dados['sinopse']?></textarea>
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-xl-12 py-2 text-center">
+                            <span>Sua recomendação poderá ter uma imagem e/ou um arquivo:*</span>
+                        </div>
                         <div class="col-xl-6 py-2">
                             <label class="form-label">Arquivo:</label>
                             <input class="form-control" type="file" name="arquivo">
