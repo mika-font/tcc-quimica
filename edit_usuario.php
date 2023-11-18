@@ -4,6 +4,12 @@ $id_usuario = $_GET['id_usuario'];
 $sql = "SELECT * FROM usuario WHERE id_usuario = '$id_usuario'";
 $resultado = mysqli_query($conexao, $sql);
 $dados = mysqli_fetch_assoc($resultado);
+
+/*if($_SESSION['tipo'] == $dados['tipo'] && $_SESSION['id_usuario'] != $id_usuario){
+    header("Location: list_users.php");
+} else {
+    
+}*/
 ?>
 
 <!DOCTYPE html>
