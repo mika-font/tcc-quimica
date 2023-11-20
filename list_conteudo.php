@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-xl-4">
                 <div class="card me-2 bg-dark text-bg-dark h-100">
-                    <img src="./assets/img/minucias.png" class="card-img object-fit-cover h-70" >
+                    <img src="./assets/img/capa-perito-criminal.jpeg" class="card-img object-fit-cover h-50" >
                     <div class="card-body">
                         <h4 class="card-title">Introdução à Química Forense</h4>
                         <p class="card-text msg_inic">Breve introdução a respeito da sua definição, áreas de atuação profissional e histórico.</p>
@@ -38,7 +38,7 @@
             </div>
             <div class="col-xl-4">
                 <div class="card me-2 bg-dark text-bg-dark h-100">
-                    <img src="./assets/img/minucias.png" class="card-img object-fit-cover h-70">
+                    <img src="./assets/img/papiloscopia.jpg" class="card-img object-fit-cover h-50">
                     <div class="card-body">
                         <h4 class="card-title">Papiloscopia</h4>
                         <p class="card-text msg_inic">Aprofunde-se em uma das áreas mais abordadas em produções cinematográficas, a papiloscopia.</p>
@@ -50,10 +50,10 @@
             </div>
             <div class="col-xl-4">
                 <div class="card me-2 bg-dark text-bg-dark h-100">
-                    <img src="./assets/img/minucias.png" class="card-img object-fit-cover h-70">
+                    <img src="./assets/img/capa-revelacao.jpg" class="card-img object-fit-cover h-50">
                     <div class="card-body">
-                        <h4 class="card-title">Técnicas de Revelação de impressão Digital</h4>
-                        <p class="card-text msg_inic">Continuando o módulo anterior, existem diferentes técnicas de revelação de uma impressão digital, venha conhecer algumas delas.</p>
+                        <h4 class="card-title">Técnicas de Revelação de Impressão Digital</h4>
+                        <p class="card-text msg_inic">Existem diferentes técnicas de revelação de uma impressão digital, venha conhecer algumas delas.</p>
                     </div>
                     <div class="card-footer text-center">
                         <a href="./conteudos/tecnicas_revel.php" class="card-link btn text-light" style="background-color: var(--color-purple);">Visualizar</a>

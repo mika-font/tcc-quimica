@@ -3,7 +3,7 @@
         <header style="background-color: var(--color-purple);">
             <nav class="navbar navbar-expand-sm">
                 <div class="container border-bottom p-1 mb-2">
-                    <a href="central.php" class="text-light link-body-emphasis text-decoration-none"><img class="navbar-brand me-3" src="../assets/img-sistem/logo-simb-branco.png" width="50" height="auto">Central</a>
+                    <a href="../central.php" class="text-light link-body-emphasis text-decoration-none"><img class="navbar-brand me-3" src="../assets/img-sistem/logo-simb-branco.png" width="50" height="auto">Central</a>
                     <div class="dropdown">
                         <a class="d-block link-body-emphasis text-decoration-none dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false">Cadastrar</a>
                         <ul class="dropdown-menu">
