@@ -73,7 +73,7 @@ function recortarText($texto)
                 $sinopse = recortarText($texto);
                 $count++;
             ?>
-                <div class="col-xl-6">
+                <div class="col-xl-6 pb-3">
                     <div class="card h-100 bg-dark text-bg-dark text-center me-2">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $dados['titulo']; ?></h5>
@@ -97,7 +97,7 @@ function recortarText($texto)
                             </div>
                             <div class="modal-body">
                                 <div class="text-wrap pb-3"><?= $texto; ?></div>
-                                <?php if($link_img != NULL){ ?>
+                                <?php echo $link_img ; if($link_img != NULL){ ?>
                                     <div class="text-center p-2"><img src="<?= $link_img; ?>" height="200px" width="auto"></div>
                                 <?php } ?>
                                 <?php if($link_arq != NULL){ ?>

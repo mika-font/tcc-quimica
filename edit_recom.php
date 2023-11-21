@@ -65,7 +65,7 @@ if($resultado == TRUE){
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2 text-center">
-                            <span>Sua recomendação poderá ter uma imagem e/ou um arquivo:*</span>
+                            <span>Sua recomendação poderá ou não ter uma imagem e/ou um arquivo:</span>
                         </div>
                         <div class="col-xl-6 py-2">
                             <label class="form-label">Arquivo:</label>
