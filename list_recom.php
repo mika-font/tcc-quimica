@@ -62,7 +62,7 @@ function recortarText($texto)
         endif ?>
         <div class="row">
             <?php
-            $limite = 3;
+            $limite = 2;
             $count = 0;
             while ($dados = mysqli_fetch_assoc($resultado)) :
                 $id_recom_p = $dados['id_recom'];
@@ -73,11 +73,11 @@ function recortarText($texto)
                 $sinopse = recortarText($texto);
                 $count++;
             ?>
-                <div class="col-xl-6 pb-3">
+                <div class="col-xl-6 py-2">
                     <div class="card h-100 bg-dark text-bg-dark text-center me-2">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $dados['titulo']; ?></h5>
-                            <p class="card-text"><?php echo $sinopse; ?></p>
+                            <p class="card-text"><?php echo $sinopse . "..."; ?></p>
                         </div>
                         <div class="card-footer text-center">
                             <button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#visual<?= $id_recom_p; ?>">Visualizar</button>
