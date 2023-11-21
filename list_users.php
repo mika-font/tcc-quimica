@@ -47,12 +47,60 @@ $dados = mysqli_fetch_assoc($resultado);
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     Usuário excluído com sucesso!
                 </div>
-        <?php } 
+        <?php }
         endif ?>
         <div class="row">
             <div class="col">
                 <div class="table-responsive">
-                    <table class="table table-light table-hover">
+                    <table class="table table-light table-hover caption-top">
+                        <caption>Lista de Professores</caption>
+                        <thead class="text-center">
+                            <tr>
+                                <td>Nome</td>
+                                <td>Email</td>
+                                <td colspan="2">Opções</td>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php $sql = "SELECT * FROM usuario WHERE tipo = 1";
+                            $result = mysqli_query($conexao, $sql);
+                            $professores = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                            foreach ($professores as $professor) { ?>
+                                <tr class="text-center">
+                                    <td><?= $professor['nome']; ?></td>
+                                    <td><?= $professor['email']; ?></td>
+                                    <td><a href="edit_usuario.php?id_usuario=<?= $professor['id_usuario']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a></td>
+                                    <td><button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $professor['id_usuario']; ?>">Excluir</button></td>
+                                </tr>
+                                <div class="modal fade" id="excluir<?= $professor['id_usuario']; ?>" tabindex="-1" aria-labelledby="excluirlabel<?= $professor['id_usuario']; ?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="excluirlabel<?= $professor['id_usuario']; ?>">Excluir Usuário?</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Você deseja mesmo excluir este usuário?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não, cancela!</button>
+                                                <a href="processa_usuario.php?deletar=<?= $professor['id_usuario']; ?>" class="btn text-light" style="background-color: var(--color-purple);">Sim, excluir!</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-light table-hover caption-top">
+                        <caption>Lista de Alunos</caption>
                         <thead class="text-center">
                             <tr>
                                 <td>Nome</td>
@@ -68,8 +116,8 @@ $dados = mysqli_fetch_assoc($resultado);
                                 <tr class="text-center">
                                     <td><?= $usuario['nome']; ?></td>
                                     <td><?= $usuario['email']; ?></td>
-                                    <td><a href="edit_usuario.php?id_usuario=<?= $usuario['id_usuario']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);" <?php if($_SESSION['tipo'] == $usuario['tipo']){?>  <?php } ?>>Editar</a></td>
-                                    <td><button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $usuario['id_usuario']; ?>" <?php if($_SESSION['tipo'] == $usuario['tipo']){?> disabled <?php } ?>>Excluir</button></td>
+                                    <td><a href="edit_usuario.php?id_usuario=<?= $usuario['id_usuario']; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a></td>
+                                    <td><button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $usuario['id_usuario']; ?>">Excluir</button></td>
                                 </tr>
                                 <div class="modal fade" id="excluir<?= $usuario['id_usuario']; ?>" tabindex="-1" aria-labelledby="excluirlabel<?= $usuario['id_usuario']; ?>" aria-hidden="true">
                                     <div class="modal-dialog">

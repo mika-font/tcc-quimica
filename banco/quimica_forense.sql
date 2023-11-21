@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Set-2023 às 23:22
+-- Tempo de geração: 21-Nov-2023 às 02:39
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -45,8 +45,10 @@ INSERT INTO `caso` (`id_caso`, `titulo`, `local`, `data`, `descricao`) VALUES
 (3, 'Fogo no parquinho', 'Uruguaiana', '2023-08-17', 'Se tudo der certo, deu certo...'),
 (5, 'Chuva Ácida: Um Perigo', 'Uruguaiana', '2023-08-20', 'xyz'),
 (6, 'A revolta de um estudante', 'Uruguaiana', '2023-08-23', 'Um estudante entra em colapso mental e acaba se revoltando!'),
-(7, 'Assassinato', 'Uruguaiana', '2023-09-11', 'A noite das bruxas'),
-(8, 'Teste de Caso', 'Emirados Árabes', '2023-09-26', 'Tentativa do layout');
+(8, 'Teste de Caso', 'Emirados Árabes', '2023-09-26', 'Tentativa do layout'),
+(9, 'ET de Varginha', 'Varginha - Brasil', '2023-10-20', 'Busquem conhecimento.'),
+(11, 'RELAÇÕES MÉTRICAS DO TRIÂNGULO RETÂNGULO', 'Varginha - Brasil', '2023-11-30', 'Sei lá, teste do escape string'),
+(12, 'Chuva Ácida: Um Perigo', 'Emirados Árabes', '2023-11-17', 'Apresentação');
 
 -- --------------------------------------------------------
 
@@ -64,16 +66,26 @@ CREATE TABLE `contem` (
 --
 
 INSERT INTO `contem` (`id_questionario`, `id_questao`) VALUES
-(1, 5),
-(1, 6),
-(1, 7),
-(1, 8),
-(1, 9),
-(1, 10),
-(1, 11),
-(1, 12),
-(1, 13),
-(1, 14);
+(4, 5),
+(4, 7),
+(4, 8),
+(4, 9),
+(4, 10),
+(4, 11),
+(4, 12),
+(4, 13),
+(4, 14),
+(4, 16),
+(3, 16),
+(3, 5),
+(3, 7),
+(3, 8),
+(3, 9),
+(3, 10),
+(3, 11),
+(3, 12),
+(3, 13),
+(3, 14);
 
 -- --------------------------------------------------------
 
@@ -95,11 +107,10 @@ INSERT INTO `imagem` (`id_imagem`, `id_caso`, `url`) VALUES
 (6, 5, 'uploads/64e25738b09d9.png'),
 (7, 5, 'uploads/64e25738b9591.png'),
 (8, 6, 'uploads/64e54f09ca98c.jpg'),
-(9, 7, 'uploads/64ff6182740c4.png'),
-(10, 7, 'uploads/64ff61828052f.png'),
-(11, 7, 'uploads/64ff618289b1a.png'),
-(12, 7, 'uploads/64ff61828ff14.png'),
-(13, 8, 'uploads/650643fdba374.png');
+(13, 8, 'uploads/650643fdba374.png'),
+(14, 9, 'uploads/6529e2bdd9d4e.jpg'),
+(17, 11, 'uploads/6553ff1b63b3e.png'),
+(18, 12, 'uploads/65566e3952d23.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,16 +134,16 @@ CREATE TABLE `questao` (
 --
 
 INSERT INTO `questao` (`id_questao`, `enunciado`, `imagem`, `alt_correta`, `alt_1`, `alt_2`, `alt_3`, `alt_4`) VALUES
-(5, 'Qual é a personagem famosa por desvendar crimes criada pela Agatha Christie?\r\n', '', 'alt3', 'Poirot', 'Miss Marple', 'Edward', 'Ferdinanda'),
-(6, 'Uma nova questão sobre a vida', '', 'alt4', 'Real', 'Ireal', 'Mundano', 'Imaginário'),
-(7, 'Teste 2', '', 'alt4', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
-(8, 'Teste 3', 'uploads/64ff630b8d15c.png', 'alt4', 'Fulano', 'Ciclano', 'Beltrano', 'Ameno'),
-(9, 'Teste 4', '', 'alt2', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
-(10, 'Teste 6', '', 'alt1', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
-(11, 'Teste 7', '', 'alt1', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
-(12, 'Vivemos em uma simulação?', '', 'alt1', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
-(13, 'Vamos ver se dá certo', 'uploads/64ff639bad860.ico', 'alt3', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
-(14, 'Estamos vivos?', '', 'alt2', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito');
+(5, 'Qual é a personagem famosa por desvendar crimes criada pela Agatha Christie?\r\n', '', 'C', 'Poirot', 'Miss Marple', 'Edward', 'Ferdinanda'),
+(7, 'Teste 2', '', 'D', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
+(8, 'Teste 3', 'uploads/64ff630b8d15c.png', 'D', 'Fulano', 'Ciclano', 'Beltrano', 'Ameno'),
+(9, 'Teste 4', '', 'B', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
+(10, 'Teste 6', '', 'A', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
+(11, 'Teste 7', '', 'B', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
+(12, 'Vivemos em uma simulação?', '', 'A', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
+(13, 'Vamos ver se dá certo', 'uploads/64ff639bad860.ico', 'C', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
+(14, 'Estamos vivos?', '', 'B', 'Fulano', 'Ciclano', 'Beltrano', 'Dorito'),
+(16, 'Teste 2', '', 'A', 'Poirot', 'Miss Marple', 'Uno', 'Ferdinanda');
 
 -- --------------------------------------------------------
 
@@ -153,7 +164,8 @@ CREATE TABLE `questionario` (
 --
 
 INSERT INTO `questionario` (`id_questionario`, `date_inic`, `date_fin`, `assunto`, `titulo_quest`) VALUES
-(1, '2023-09-11', '2023-09-12', 'Vai dar certo', 'Assassinato');
+(3, '2023-11-08', '2023-11-29', 'Teste 2', 'Teste 2'),
+(4, '2023-11-23', '2023-11-30', 'Teste', 'Fogo no parquinho');
 
 -- --------------------------------------------------------
 
@@ -174,7 +186,7 @@ CREATE TABLE `recomendacao` (
 --
 
 INSERT INTO `recomendacao` (`id_recom`, `titulo`, `sinopse`, `imagem`, `arquivo`) VALUES
-(1, 'Colecionador de Ossos', 'A revolta de Kian', 'uploads/64ea69ab438a8.pdf', 'uploads/64ea69ab43a8b.jpg');
+(1, 'Colecionador de Ossos', 'A revolta de Kian', 'uploads/64ea69ab43a8b.jpg', 'uploads/64ea69ab438a8.pdf');
 
 -- --------------------------------------------------------
 
@@ -184,8 +196,16 @@ INSERT INTO `recomendacao` (`id_recom`, `titulo`, `sinopse`, `imagem`, `arquivo`
 
 CREATE TABLE `responde` (
   `id_usuario` int(11) NOT NULL,
-  `id_questionario` int(11) NOT NULL
+  `id_questionario` int(11) NOT NULL,
+  `quant_acertos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `responde`
+--
+
+INSERT INTO `responde` (`id_usuario`, `id_questionario`, `quant_acertos`) VALUES
+(5, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -206,8 +226,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES
-(1, 'Mikael', 'mikaelfontoura29@gmail.com', '12345', 1),
-(2, 'Samuel', 'samuel@gmail.com', '12345', 0);
+(1, 'Mikael', 'mikaelfontoura29@gmail.com', '$2y$10$K7ZkM9D.GJiNJo0f2DAtguHDHhut5nJeyBB85ieKWc.kZoBhPVUue', 1),
+(2, 'Samuel', 'samuel@gmail.com', '$2y$10$.3sbftX8b/WR28CZOahqoeaNTG8xE0lgjbNG3irJZOHRgsZBYpwGm', 0),
+(3, 'Pedro do Pampa', 'pedro@gmail.com', '$2y$10$oyM3pjd9k/oHpECIEdQp7.EOpPl8SrutDvw7qzeMAOCJH4KOYz4ri', 0),
+(4, 'Lavínia', 'lavinia@gmail.com', '12345', 0),
+(5, 'Mikael Fontoura', 'mika@gmail.com', '$2y$10$vvVeYzA9clS/v.bIUGFbMeHFKyCr3IwOMMcpUIGWraTHes1DI9MZe', 0),
+(6, 'Admin', 'admin@gmail.com', '$2y$10$wNRFelFQiQ.WTOIx369Ni.gVXtPFXkLW6nkoE2jTRv0acccfPeeKu', 2);
 
 --
 -- Índices para tabelas despejadas
@@ -272,25 +296,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `caso`
 --
 ALTER TABLE `caso`
-  MODIFY `id_caso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_caso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `id_imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `questao`
 --
 ALTER TABLE `questao`
-  MODIFY `id_questao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_questao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `questionario`
 --
 ALTER TABLE `questionario`
-  MODIFY `id_questionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_questionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `recomendacao`
@@ -302,7 +326,7 @@ ALTER TABLE `recomendacao`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para despejos de tabelas
