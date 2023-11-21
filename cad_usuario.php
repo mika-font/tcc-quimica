@@ -36,16 +36,19 @@
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     As senhas devem ser iguais!
                 </div>
-            <?php } else if ($msg == 3) { ?> 
+            <?php } else if ($msg == 3) { ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     Já existe uma conta cadastrada com este email!
                 </div>
-        <?php }        
+        <?php }
         endif ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_usuario.php" class="form-cad-user">
+                    <div class="text-center">
+                        <p>Campo Obrigatório: *</p>
+                    </div>
                     <div class="row">
                         <div class="col-xl-6 py-2">
                             <label class="form-label">Nome:*</label>
@@ -59,21 +62,21 @@
                     <div class="row">
                         <div class="col-xl-6 py-2">
                             <label class="form-label">Senha:*</label>
-                            <input class="form-control" type="password" name="senha" class="input" required> 
+                            <input class="form-control" type="password" name="senha" class="input" required>
                         </div>
                         <div class="col-xl-6 py-2">
                             <label class="form-label">Repetir Senha:*</label>
                             <input class="form-control" type="password" name="repetirSenha" class="input" required>
                         </div>
                     </div>
-                    <div class="row">                    
+                    <div class="row">
                         <div class="col-xl-8 py-2">
                             <p>Já possui conta? Faça <a href="login.php">Login</a></p>
                         </div>
                         <div class="col-xl-4">
                             <div class="text-end py-2">
                                 <button class="btn link-body-emphasis text-light" type="submit" class="input" name="cadastrar" style="background-color: var(--color-purple)">Cadastrar</button>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </form>

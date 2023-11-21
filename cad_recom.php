@@ -31,11 +31,14 @@
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     Preencha todos os campos corretamente!
                 </div>
-            <?php } 
+        <?php }
         endif; ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_recom.php" enctype="multipart/form-data">
+                    <div class="text-center">
+                        <p>Campo Obrigatório: *</p>
+                    </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Título:*</label>
@@ -50,7 +53,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xl-12 py-2 text-center">
-                            <span>Sua recomendação poderá ter uma imagem e/ou um arquivo:*</span>
+                            <span>Sua recomendação poderá ou não ter uma imagem e/ou um arquivo:</span>
                         </div>
                         <div class="col-xl-6 py-2">
                             <label class="form-label">Arquivo:</label>

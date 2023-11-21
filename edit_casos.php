@@ -37,8 +37,12 @@ $dados = mysqli_fetch_assoc($resultado);
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     Preencha todos os campos corretamente!
                 </div>
-        <?php } endif; ?>
+        <?php }
+        endif; ?>
         <form method="POST" action="processa_casos.php" enctype="multipart/form-data">
+            <div class="text-center">
+                <p>Campo Obrigatório: *</p>
+            </div>
             <div class="row">
                 <div class="col-xl-12 py-2">
                     <input type="hidden" name="id_caso" value="<?php echo $dados['id_caso'] ?>">

@@ -48,6 +48,9 @@ if ($resultado == TRUE) {
         <div class="row">
             <div class="col">
                 <form action="processa_questao.php" method="POST" enctype="multipart/form-data">
+                    <div class="text-center">
+                        <p>Campo Obrigatório: *</p>
+                    </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <input type="hidden" name="id_questao" value="<?php echo $dados['id_questao'] ?>">

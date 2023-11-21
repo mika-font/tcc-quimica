@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <?php include_once('cabecalho.php')?>
+    <?php include_once('cabecalho.php') ?>
     <main class="container pb-3">
         <div class="row">
             <div class="col">
@@ -22,7 +22,7 @@
                     <h2 class="h2">Cadastrar Questão</h2>
                     <div class="m-3"><i class="fa-solid fa-flask-vial fa-2xl" style="color: #000000;"></i></div>
                     <hr>
-                </div>   
+                </div>
             </div>
         </div>
         <?php if (isset($_GET['msg'])) :
@@ -42,6 +42,9 @@
         <div class="row">
             <div class="col">
                 <form action="processa_questao.php" method="POST" enctype="multipart/form-data">
+                    <div class="text-center">
+                        <p>Campo Obrigatório: *</p>
+                    </div>
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Enunciado:*</label>
@@ -124,7 +127,7 @@
             </div>
         </div>
     </main>
-    <?php include_once('rodape.php')?>
+    <?php include_once('rodape.php') ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>

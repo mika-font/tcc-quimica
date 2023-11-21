@@ -33,8 +33,11 @@
                 </div>
         <?php } endif; ?>
         <form method="POST" action="processa_casos.php" enctype="multipart/form-data">
+            <div class="text-center">
+                <p>Campo Obrigatório: *</p>
+            </div>
             <div class="row">
-                <div class="col-xl-12 py-2">
+                <div class="col-xl-12 pb-2">
                     <label class="form-label">Título:*</label>
                     <input class="form-control" type="text" name="titulo" required>
                 </div>

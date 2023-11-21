@@ -52,10 +52,14 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     Selecione somente 10 questões!
                 </div>
-        <?php } endif ?>
+        <?php }
+        endif ?>
         <div class="row">
             <div class="col">
                 <form method="POST" action="processa_questionario.php">
+                    <div class="text-center">
+                        <p>Campo Obrigatório: *</p>
+                    </div>
                     <div class="row">
                         <div class="col-xl-6 py-2">
                             <input type="hidden" name="id_questionario" value="<?= $id_questionario; ?>">
@@ -83,7 +87,7 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
                         </div>
                     </div>
                     <div class="row">
-                    <?php
+                        <?php
                         $limite = 2;
                         $count = 0;
                         foreach ($dados as $pergunta) :
@@ -185,7 +189,7 @@ $dados = mysqli_fetch_all($retorno, MYSQLI_ASSOC);
     </main>
     <?php include_once('rodape.php') ?>
     <script>
-        function limitar(){
+        function limitar() {
             let botaoEnvio = document.getElementById("editar");
             let checkBoxes = document.querySelectorAll("#checkbox");
             let limite = 10;
