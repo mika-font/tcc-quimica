@@ -6,7 +6,7 @@ if (isset($_POST['cadastrar'])) {
     $arquivo = $_FILES['arquivo'];
     $imagem = $_FILES['imagem'];
     if (!empty($titulo) && !empty($sinopse)) {
-        if ($arquivo != NULL) {
+        if (!empty($arquivo['name']) && $arquivo['error'] === UPLOAD_ERR_OK) {
             $name_arquivo = $arquivo['name'];
             $tmp_name_arquivo = $arquivo['tmp_name'];
             $diretorio = "uploads/";
@@ -18,7 +18,7 @@ if (isset($_POST['cadastrar'])) {
         } else {
             $arv_arv = NULL;
         }
-        if ($imagem != NULL) {
+        if (!empty($imagem['name']) && $imagem['error'] === UPLOAD_ERR_OK) {
             $name_imagem = $imagem['name'];
             $tmp_name_imagem = $imagem['tmp_name'];
             $diretorio = "uploads/";
@@ -49,7 +49,7 @@ if (isset($_POST['cadastrar'])) {
     $arquivo = $_FILES['arquivo'];
     $imagem = $_FILES['imagem'];
     if (!empty($titulo) && !empty($sinopse)) {
-        if ($arquivo != NULL) {
+        if (!empty($arquivo['name']) && $arquivo['error'] === UPLOAD_ERR_OK) {
             $name_arquivo = $arquivo['name'];
             $tmp_name_arquivo = $arquivo['tmp_name'];
             $diretorio = "uploads/";
@@ -66,9 +66,10 @@ if (isset($_POST['cadastrar'])) {
         } else {
             $arv_arv = NULL;
         }
-        if ($imagem != NULL) {
+        if (!empty($imagem['name']) && $imagem['error'] === UPLOAD_ERR_OK) {
             $name_imagem = $imagem['name'];
             $tmp_name_imagem = $imagem['tmp_name'];
+            $diretorio = "uploads/";
 
             $sql = "SELECT (imagem) FROM recomendacao WHERE id_recom='$id_recom'";
             $consulta = mysqli_query($conexao, $sql);
