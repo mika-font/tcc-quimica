@@ -17,7 +17,7 @@ $resultado = mysqli_query($conexao, $sql);
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
     <link rel="stylesheet" href="./assets/css/pacote.css">
     <link rel="shortcut icon" href="./assets/img-sistem/atomo.ico" type="image/x-icon">
-    <title>Visualizar Retorno</title>
+    <title>Relatório de Respostas</title>
 </head>
 
 <body>
@@ -57,7 +57,7 @@ $resultado = mysqli_query($conexao, $sql);
         <div class="row">
             <div class="col">
                 <div class="text-end py-3">
-                    <a href="gerarpdf.php" class="btn link-body-emphasis text-light" style="background-color: var(--color-purple);">Gerar PDF</a> 
+                    <a href="relatorio.php?id_questionario=<?= $id_questionario; ?>" class="btn link-body-emphasis text-light" style="background-color: var(--color-purple);">Gerar PDF</a> 
                 </div>
             </div>
         </div>
