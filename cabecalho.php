@@ -67,6 +67,7 @@
                             <li><a class="dropdown-item" href="cad_recom.php">Recomendações</a></li>
                             <li><a class="dropdown-item" href="cad_questionario.php">Questionários</a></li>
                             <li><a class="dropdown-item" href="cad_questao.php">Questões</a></li>
+                            <li><a class="dropdown-item" href="cad_usuario.php">Usuários</a></li>
                         </ul>
                     </div>
                     <ul class="navbar-nav">

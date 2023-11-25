@@ -55,7 +55,7 @@ if ($resultado == TRUE) {
                         <div class="col-xl-12 py-2">
                             <input type="hidden" name="id_questao" value="<?php echo $dados['id_questao'] ?>">
                             <label class="form-label">Enunciado:*</label>
-                            <textarea class="form-control" name="enunciado" id="enunciado" cols="100" rows="30" required><?php echo $dados['enunciado'] ?></textarea>
+                            <textarea class="form-control" name="enunciado" id="enunciado" cols="12" rows="5" required><?php echo $dados['enunciado'] ?></textarea>
                         </div>
                     </div>
                     <div class="row">

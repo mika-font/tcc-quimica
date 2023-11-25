@@ -60,7 +60,7 @@ if ($resultado == TRUE) {
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Sinopse:*</label>
-                            <textarea class="form-control" type="text" name="sinopse" id="sinopse" cols="100" rows="30" required><?php echo $dados['sinopse'] ?></textarea>
+                            <textarea class="form-control" type="text" name="sinopse" id="sinopse" cols="12" rows="10" required><?php echo $dados['sinopse'] ?></textarea>
                         </div>
                     </div>
                     <div class="row">

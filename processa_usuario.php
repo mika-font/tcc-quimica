@@ -19,7 +19,7 @@ if (isset($_POST['cadastrar'])) {
                 $sql = "INSERT INTO usuario (nome, email, senha, tipo) VALUES ('$nome', '$email', '$senha_cript', '$tipo')";
                 $resultado = mysqli_query($conexao, $sql);
                 if ($resultado == true) {
-                    if (isset($_SESSION) && $_SESSION['tipo'] == 1) {
+                    if (isset($_SESSION) && $_SESSION['tipo'] == 2) {
                         header("Location: list_users.php?msg=1");
                     } else {
                         header("Location: login.php?msg=1");

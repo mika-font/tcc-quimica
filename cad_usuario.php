@@ -69,9 +69,12 @@
                             <input class="form-control" type="password" name="repetirSenha" class="input" required>
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-xl-8 py-2">
-                            <p>Já possui conta? Faça <a href="login.php">Login</a></p>
+                            <?php if (!isset($_SESSION['id_usuario'])) {?>
+                                <p>Já possui conta? Faça <a href="login.php">Login</a></p>
+                            <?php } ?>
                         </div>
                         <div class="col-xl-4">
                             <div class="text-end py-2">

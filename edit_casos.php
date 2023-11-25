@@ -63,7 +63,7 @@ $dados = mysqli_fetch_assoc($resultado);
             <div class="row">
                 <div class="col-xl-12 py-2">
                     <label class="form-label">Descrição:* </label>
-                    <textarea class="form-control" name="texto" id="texto" cols="100" rows="30" required><?php echo $dados['descricao'] ?></textarea>
+                    <textarea class="form-control" name="texto" id="texto" cols="12" rows="10" required><?php echo $dados['descricao'] ?></textarea>
                 </div>
             </div>
             <div class="row">

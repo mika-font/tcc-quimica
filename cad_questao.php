@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-xl-12 py-2">
                             <label class="form-label">Enunciado:*</label>
-                            <textarea class="form-control" name="enunciado" id="enunciado" cols="100" rows="30" required></textarea>
+                            <textarea class="form-control" name="enunciado" id="enunciado" cols="12" rows="5" required></textarea>
                         </div>
                     </div>
                     <div class="row">
