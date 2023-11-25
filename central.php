@@ -115,7 +115,7 @@ function recortarText($texto)
         </div>
         <div class="row">
             <?php
-            $limite = 3;
+            $limite = 2;
             $count = 0;
             while ($recom = mysqli_fetch_assoc($result_recom)) :
                 $id_recom_p = $recom['id_recom'];
@@ -147,7 +147,7 @@ function recortarText($texto)
                             <div class="modal-body">
                                 <div class="text-wrap pb-3"><?= $texto; ?></div>
                                 <?php if($link_img != NULL){ ?>
-                                    <div class="text-center p-2"><img src="<?= $link_img; ?>" height="200px" width="auto"></div>
+                                    <div class="text-center p-2"><img src="<?= $link_img; ?>" height="500px" width="auto"></div>
                                 <?php } ?>
                                 <?php if($link_arq != NULL){ ?>
                                     <p>Acesse o documento complementar através do link: <a href="<?= $link_arq; ?>">Arquivo PDF</a></p>
