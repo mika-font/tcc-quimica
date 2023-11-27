@@ -78,7 +78,7 @@ if ($result_casos == TRUE) {
             ?>
                 <div class="col-xl-4">
                     <div class="card me-2 bg-dark text-bg-dark h-100">
-                        <img src="<?php echo $urls[0]; ?>" class="card-img object-fit-cover" height="100%">
+                        <img src="<?php echo $urls[0]; ?>" class="card-img object-fit-cover h-75">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $dados['titulo']; ?></h5>
                             <p class="card-text"><?php echo "<b>Local:</b> " . $dados['local'] . "<br><b> Data:</b> " . $dataformat; ?></p>
