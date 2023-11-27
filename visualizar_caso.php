@@ -9,6 +9,7 @@ $dados = mysqli_fetch_assoc($resultado);
 $urls = explode(",", $dados['urls_img']);
 $dataTime = date_create($dados['data']);
 $dataformat = date_format($dataTime, 'd/m/Y');
+$texto_formatado = nl2br($dados['descricao']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -43,8 +44,8 @@ $dataformat = date_format($dataTime, 'd/m/Y');
         </div>
         <div class="row">
             <div class="col">
-                <div class="text-wrap">
-                    <?= $dados['descricao']; ?>
+                <div class="text-wrap msg_inic">
+                    <?= $texto_formatado; ?>
                 </div>
                 <hr>
             </div>
@@ -52,8 +53,10 @@ $dataformat = date_format($dataTime, 'd/m/Y');
         <div class="row">
             <div class="col">
                 <div class="text-center">
-                    <?php for($i = 0; $i < count($urls); $i++) : ?>
+                    <?php $j = 0; 
+                        for($i = 0; $i < count($urls); $i++) : $j++; ?>
                         <img src="<?= $urls[$i]; ?>" height="200px" width="auto">
+                        <?php if ($j == 3){ echo "<br><div class='py-2'></div>";} ?>
                     <?php endfor ?>
                 </div>
 

@@ -88,7 +88,7 @@ function recortarText($texto)
             ?>
                 <div class="col-xl-4">
                     <div class="card me-2 bg-dark text-bg-dark h-100">
-                        <img src="<?php echo $urls[0]; ?>" class="card-img object-fit-cover" height="100%">
+                        <img src="<?php echo $urls[0]; ?>" class="card-img object-fit-cover h-75">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $casos['titulo']; ?></h5>
                             <p class="card-text"><?php echo "<b>Local:</b> " . $casos['local'] . "<br><b> Data:</b> " . $dataformat; ?></p>
@@ -123,7 +123,7 @@ function recortarText($texto)
                 $link_arq = $recom['arquivo'];
 
                 $texto = $recom['sinopse'];
-                $sinopse = recortarText($texto);
+                $sinopse = recortarText($texto) . "...";
                 $count++;
             ?>
                 <div class="col-xl-6">

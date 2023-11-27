@@ -18,7 +18,7 @@ if (isset($_POST['cadastrar'])) {
             $names = $files['name'];
             $tmp_names = $files['tmp_name'];
             $diretorio = "uploads/";
-
+            
             foreach ($names as $index => $name) {
                 $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
                 $newname = uniqid() . '.' . $extension;
