@@ -5,7 +5,7 @@ $sql = "SELECT * FROM usuario WHERE id_usuario = '$id_usuario'";
 $resultado = mysqli_query($conexao, $sql);
 $dados = mysqli_fetch_assoc($resultado);
 
-$sql_casos = "SELECT caso.id_caso, titulo, local, data, GROUP_CONCAT(imagem.url) 
+$sql_casos = "SELECT caso.id_caso, titulo, local, data, GROUP_CONCAT(imagem.url ORDER BY imagem.id_imagem) 
 AS urls_img FROM caso INNER JOIN imagem ON caso.id_caso = imagem.id_caso GROUP BY id_caso ORDER BY caso.id_caso DESC LIMIT 6";
 $result_casos = mysqli_query($conexao, $sql_casos);
 

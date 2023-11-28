@@ -9,10 +9,10 @@ INNER JOIN questionario ON responde.id_questionario = questionario.id_questionar
 WHERE questionario.id_questionario = $id_questionario";
 $resultado = mysqli_query($conexao, $sql);
 $contador = mysqli_num_rows($resultado);
-$info = mysqli_fetch_assoc($resultado);
+$info = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
-$titulo_quest = $info['titulo_quest'];
-$assunto_quest = $info['assunto'];
+$titulo_quest = $info[0]['titulo_quest'];
+$assunto_quest = $info[0]['assunto'];
 
 $dados = "<!DOCTYPE html>";
 $dados .= "<html lang='pt-BR'>";
@@ -30,7 +30,7 @@ td { text-align: center;   height: 30px; }
 </style>";
 $dados .= "</head>";
 $dados .= "<body>";
-$dados .= "<h4>Tabela de Respostas do Questionário: $titulo_quest </h4>";
+$dados .= "<h4>Relatório de Acertos do Questionário: $titulo_quest </h4>";
 $dados .= "<hr>";
 $dados .= "<div class='container'>";
 $dados .= "<table>";
@@ -41,15 +41,11 @@ $dados .= "<th> Número de Acertos </th>";
 $dados .= "</tr>";
 $dados .= "</thead>"; 
 $dados .= "<tbody>";
-$i = 1;
-while ($i <= $contador) {
-    $nome = $info['nome'];
-    $quant_acertos = $info['quant_acertos'];
+foreach ($info as $aluno){
     $dados .= "<tr>";
-    $dados .= "<td>" . $nome . "</td>";
-    $dados .= "<td>" . $quant_acertos . "</td>";
+    $dados .= "<td>" . $aluno['nome'] . "</td>";
+    $dados .= "<td>" . $aluno['quant_acertos'] . "</td>";
     $dados .= "</tr>";
-    $i++;
 }
 $dados .= "</tbody>";
 $dados .= "</table>";

@@ -1,7 +1,7 @@
 <?php
 include_once('conexao.php');
 $conexao = conectar();
-$sql_casos = "SELECT caso.id_caso, titulo, local, data, GROUP_CONCAT(imagem.url) 
+$sql_casos = "SELECT caso.id_caso, titulo, local, data, GROUP_CONCAT(imagem.url ORDER BY imagem.id_imagem) 
 AS urls_img FROM caso INNER JOIN imagem ON caso.id_caso = imagem.id_caso GROUP BY id_caso ORDER BY caso.id_caso DESC LIMIT 6";
 $result_casos = mysqli_query($conexao, $sql_casos);
 
