@@ -78,11 +78,18 @@ if (isset($_POST['cadastrar'])) {
 } else if (isset($_GET['deletar'])) {
     include_once('controle.php');
     $id_usuario = mysqli_escape_string($conexao, $_GET['deletar']);
-    $sql = "DELETE FROM usuario WHERE id_usuario = $id_usuario";
-    $resultado = mysqli_query($conexao, $sql);
+    $sql_responde = "DELETE FROM responde WHERE id_usuario = $id_usuario";
+    $consulta = mysqli_query($conexao, $sql_responde);
+    if($consulta == TRUE){
+        $sql = "DELETE FROM usuario WHERE id_usuario = $id_usuario";
+        $resultado = mysqli_query($conexao, $sql);
 
-    if ($resultado == true) {
-        header("Location: list_users.php?msg=3");
+        if ($resultado == true) {
+            header("Location: list_users.php?msg=3");
+        } else {
+            echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
+            die();
+        }
     } else {
         echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
         die();

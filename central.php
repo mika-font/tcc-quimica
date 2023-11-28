@@ -122,7 +122,7 @@ function recortarText($texto)
                 $link_img = $recom['imagem'];
                 $link_arq = $recom['arquivo'];
 
-                $texto = $recom['sinopse'];
+                $texto = nl2br($recom['sinopse']);
                 $sinopse = recortarText($texto) . "...";
                 $count++;
             ?>
@@ -145,7 +145,7 @@ function recortarText($texto)
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="text-wrap pb-3"><?= $texto; ?></div>
+                                <div class="text-wrap msg_inic pb-3"><?= $texto; ?></div>
                                 <?php if($link_img != NULL){ ?>
                                     <div class="text-center p-2"><img src="<?= $link_img; ?>" height="500px" width="auto"></div>
                                 <?php } ?>
