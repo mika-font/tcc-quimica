@@ -28,7 +28,7 @@ if (isset($_POST['solicitar'])) {
                     $mail->Host = "smtp.gmail.com";
                     $mail->SMTPAuth = true;
                     $mail->Username = 'cafecrimesecasos@gmail.com'; 
-                    $mail->Password = '';
+                    $mail->Password = 'brqubszmzpjfcrji';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
                     $mail->Port = 465;
                     
