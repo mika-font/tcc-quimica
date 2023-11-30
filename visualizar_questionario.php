@@ -39,10 +39,13 @@ if (isset($_POST['enviar'])) {
         }
         $gabarito[] = $questions[$i]['alt_correta'];
     }
-    
+
     $id_usuario = $_SESSION['id_usuario'];
-    $comando = "INSERT INTO responde VALUE ('$id_usuario', '$id_questionario', '$contagem')";
-    $consulta = mysqli_query($conexao, $comando);
+    if($_SESSION['tipo'] == 0){
+        $comando = "INSERT INTO responde VALUE ('$id_usuario', '$id_questionario', '$contagem')";
+        $consulta = mysqli_query($conexao, $comando);
+    }
+
 }
 ?>
 

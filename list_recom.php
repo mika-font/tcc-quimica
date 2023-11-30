@@ -81,7 +81,7 @@ function recortarText($texto)
                         </div>
                         <div class="card-footer text-center">
                             <button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#visual<?= $id_recom_p; ?>">Visualizar</button>
-                            <?php if ($user['tipo'] == 1) : ?>
+                            <?php if ($user['tipo'] == 1 || $user['tipo'] == 2) : ?>
                                 <a href="edit_recom.php?id_recom=<?= $id_recom_p; ?>" class="card-link btn text-light" style="background-color: var(--color-purple);">Editar</a>
                                 <button type="button" class="card-link btn text-light" style="background-color: var(--color-purple);" data-bs-toggle="modal" data-bs-target="#excluir<?= $id_recom_p; ?>">Excluir</button>
                             <?php endif ?>
