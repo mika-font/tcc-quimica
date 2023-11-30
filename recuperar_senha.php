@@ -30,7 +30,7 @@ if (isset($_POST['solicitar'])) {
                     $mail->Username = 'cafecrimesecasos@gmail.com'; 
                     $mail->Password = 'brqubszmzpjfcrji';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                    $mail->Port = 465;
+                    $mail->Port = 465;  //587;
                     
                     $mail->setFrom('cafecrimesecasos@gmail.com', 'C3 - Café, Crimes e Casos'); 
                     $mail->addAddress($email, $nome);
