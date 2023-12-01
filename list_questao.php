@@ -46,23 +46,25 @@ $resultado = mysqli_query($conexao, $sql);
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     Questão excluída com sucesso!
                 </div>
-        <?php } else if ($msg == 4) { ?>
+            <?php } else if ($msg == 4) { ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button class="btn-close" data-bs-dismiss="alert"></button>
                     Não é possível excluir a questão, pois está vinculada a um questionário!
                     Para a solução, retire esta questão do questionario.
                 </div>
-        <?php } endif ?>
+        <?php }
+        endif ?>
         <div class="row">
             <?php
             $limite = 2;
             $count = 0;
+            $num_quest = 1;
             while ($dados = mysqli_fetch_assoc($resultado)) :
                 $count++;
             ?>
                 <div class="col-xl-6">
                     <div class="card text-center h-100">
-                        <div class="card-header">Questão <?php echo $dados['id_questao']; ?></div>
+                        <div class="card-header">Questão <?= $num_quest; ?></div>
                         <div class="card-body">
                             <p class="card-text"><?php echo $dados['enunciado']; ?></p>
                             <?php if (!empty($dados['imagem'])) : ?>
@@ -73,11 +75,11 @@ $resultado = mysqli_query($conexao, $sql);
                                 <p><?php echo "b) " . $dados['alt_2'] ?></p>
                                 <p><?php echo "c) " . $dados['alt_3'] ?></p>
                                 <p><?php echo "d) " . $dados['alt_4'] ?></p>
-                                <p><b>Resposta: <?php if ($dados['alt_correta'] == "alt1") {
+                                <p><b>Resposta: <?php if ($dados['alt_correta'] == "A") {
                                                     echo $dados['alt_1'];
-                                                } elseif ($dados['alt_correta'] == "alt2") {
+                                                } elseif ($dados['alt_correta'] == "B") {
                                                     echo $dados['alt_2'];
-                                                } elseif ($dados['alt_correta'] == "alt3") {
+                                                } elseif ($dados['alt_correta'] == "C") {
                                                     echo $dados['alt_3'];
                                                 } else {
                                                     echo $dados['alt_4'];
@@ -113,7 +115,8 @@ $resultado = mysqli_query($conexao, $sql);
                     echo '<div class="row">';
                     $count = 0;
                 endif ?>
-            <?php endwhile ?>
+            <?php $num_quest++;
+            endwhile ?>
         </div>
 
     </main>

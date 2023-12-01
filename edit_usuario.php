@@ -65,7 +65,6 @@ $dados = mysqli_fetch_assoc($resultado);
                     <div class="row">
                         <div class="col-xl-6 py-2">
                             <input type="hidden" name="id_usuario" value="<?= $dados['id_usuario']; ?>">
-                            <input type="hidden" name="tipo" value="<?= $dados['tipo']; ?>">
                             <label class="form-label">Nome:*</label>
                             <input class="form-control" type="text" name="nome" class="input" value="<?php echo $dados['nome']; ?>" required>
                         </div>
@@ -85,7 +84,19 @@ $dados = mysqli_fetch_assoc($resultado);
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-12">
+                        <div class="col-xl-8">
+                            <?php if ($_SESSION['tipo'] == 2) { ?>
+                                <div class="form-check">
+                                    <label class="form-check-label"><input class="form-check-input" type="radio" value="1" name="tipo" <?php if($dados['tipo'] == 1){ echo "checked"; } ?>>Professor</label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label"><input class="form-check-input" type="radio" value="0" name="tipo" <?php if($dados['tipo'] == 0){ echo "checked"; } ?>>Aluno</label>
+                                </div>
+                            <?php } else { ?>
+                                <input type="hidden" name="tipo" value="<?= $dados['tipo']; ?>">
+                            <?php } ?>
+                        </div>
+                        <div class="col-xl-4">
                             <div class="text-end py-2">
                                 <button class="btn link-body-emphasis text-light" type="submit" class="input" name="editar" style="background-color: var(--color-purple)">Editar</button>
                                 <?php if ($_SESSION['tipo'] == 1 && $id_usuario != $_SESSION['id_usuario']) { ?>

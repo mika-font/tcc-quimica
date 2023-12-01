@@ -69,10 +69,16 @@
                             <input class="form-control" type="password" name="repetirSenha" class="input" required>
                         </div>
                     </div>
-                    
                     <div class="row">
                         <div class="col-xl-8 py-2">
-                            <?php if (!isset($_SESSION['id_usuario'])) {?>
+                            <?php if (isset($_SESSION['id_usuario'])) { ?>
+                                <div class="form-check">
+                                    <label class="form-check-label"><input class="form-check-input" type="radio" value="1" name="tipo">Professor</label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label"><input class="form-check-input" type="radio" value="0" name="tipo">Aluno</label> 
+                                </div>
+                            <?php } elseif (!isset($_SESSION['id_usuario'])) { ?>
                                 <p>Já possui conta? Faça <a href="login.php">Login</a></p>
                             <?php } ?>
                         </div>

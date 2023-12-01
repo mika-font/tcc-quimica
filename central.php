@@ -41,7 +41,7 @@ function recortarText($texto)
         <div class="row">
             <div class="col">
                 <div class="text-center py-3">
-                    <h2 class="h2">Bem-vindo a plataforma, <?= $dados['nome']; ?></h2>
+                    <h2 class="h2">Bem-vindo(a) a plataforma, <?= $dados['nome']; ?></h2>
                     <hr>
                 </div>   
             </div>

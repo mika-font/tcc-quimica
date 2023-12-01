@@ -80,13 +80,14 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <?php
                         $limite = 2;
                         $count = 0;
+                        $num_quest = 1;
                         foreach ($questoes as $questao) :
                             $count++;
                         ?>
                             <div class="col-xl-6 py-3">
                                 <div class="card text-center h-100">
                                     <div class="card-header">
-                                        <label><input type="checkbox" id="checkbox" name="select_question[]" onclick="limitar()" value="<?php echo $questao['id_questao'] ?>"> Questão n° <?php echo $questao['id_questao']; ?></label>
+                                        <label><input type="checkbox" id="checkbox" name="select_question[]" onclick="limitar()" value="<?php echo $questao['id_questao'] ?>"> Questão n° <?= $num_quest; ?></label>
                                     </div>
                                     <div class="card-body">
                                         <p class="card-text"><?php echo $questao['enunciado']; ?></p>
@@ -98,11 +99,11 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                             <p><?php echo "b) " . $questao['alt_2'] ?></p>
                                             <p><?php echo "c) " . $questao['alt_3'] ?></p>
                                             <p><?php echo "d) " . $questao['alt_4'] ?></p>
-                                            <p><b>Resposta: <?php if ($questao['alt_correta'] == "alt1") {
+                                            <p><b>Resposta: <?php if ($questao['alt_correta'] == "A") {
                                                                 echo $questao['alt_1'];
-                                                            } elseif ($questao['alt_correta'] == "alt2") {
+                                                            } elseif ($questao['alt_correta'] == "B") {
                                                                 echo $questao['alt_2'];
-                                                            } elseif ($questao['alt_correta'] == "alt3") {
+                                                            } elseif ($questao['alt_correta'] == "C") {
                                                                 echo $questao['alt_3'];
                                                             } else {
                                                                 echo $questao['alt_4'];
@@ -116,7 +117,7 @@ $questoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                 echo '<div class="row">';
                                 $count = 0;
                             endif ?>
-                        <?php endforeach ?>
+                        <?php $num_quest++; endforeach ?>
                     </div>
                     <div class="row">
                         <div class="col">

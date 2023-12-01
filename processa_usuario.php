@@ -8,8 +8,11 @@ if (isset($_POST['cadastrar'])) {
     $email = mysqli_escape_string($conexao, $_POST['email']);
     $senha = mysqli_escape_string($conexao, $_POST['senha']);
     $repetirSenha = mysqli_escape_string($conexao, $_POST['repetirSenha']);
-    $tipo = 0;
-
+    if(isset($_SESSION['tipo']) && $_SESSION['tipo'] == 2){
+        $tipo = $_POST['tipo'];
+    } else {
+        $tipo = 0;
+    }
     if (!empty($nome) && !empty($email) && !empty($senha) && !empty($repetirSenha)) {
         if ($senha == $repetirSenha) {
             $comando = "SELECT email FROM usuario WHERE email='$email'";
